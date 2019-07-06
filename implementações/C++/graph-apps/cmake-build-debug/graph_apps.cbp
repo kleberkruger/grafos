@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="graph_apps"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="graph_apps">
+				<Option output="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/graph_apps" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 graph_apps"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="graph_apps/fast">
+				<Option output="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/graph_apps" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 graph_apps/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Volumes/KrugerDrive/kleberkruger/Clouds/Box\ Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos\ em\ Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/application.h">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graph.cpp">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graph.h">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.cpp">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.h">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/flowsapp.cpp">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/flowsapp.h">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/main.cpp">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/mstapp.cpp">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/mstapp.h">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/pathsapp.cpp">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/pathsapp.h">
+			<Option target="graph_apps"/>
+		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

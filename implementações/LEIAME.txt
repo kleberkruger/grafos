@@ -1,0 +1,38 @@
+Classe Application:
+
+* Para que serve?
+Para automatizar as tarefas de cada aplicação.
+
+* Quais são as tarefas?
+1 - ler o arquivo de entrada;
+2 - extrair as informações de entrada gerando dados para a função de processamento;
+3 - processar os dados (processa os dados de entrada e gera informações de saída);
+4 - exibir os resultados (informações de saída).
+
+* É sempre assim?
+Sim, para este tipo de aplicação. Entretanto, aplicações mais genéricas podem podem extrair as informações de entrada a
+partir de vários arquivos (não necessariamente arquivos de texto), e exibir a saída em um ou vários outros arquivos
+(não necessariamente arquivos de texto).
+
+*** Restringindo às aplicações dos Trabalhos de Grafos.
+1 - As entradas e saídas são sempre em arquivos de texto;
+2 - Haverá um único arquivo de entrada e um único arquivo de saída;
+
+* Quais processos podem ser automatizados?
+1 - (Tarefa 1): Ler o arquivo de entrada (lê o arquivo de texto e retorna uma string);
+2 - Exibir os status e computar os tempos de cada tarefa.
+
+* Quais processos NÃO podem ser automatizados?
+1 - (Tarefa 2) extrair as informações de entrada gerando dados para a função de processamento;
+Embora este processo seja parecido em todas as aplicações (lê o arquivo de entrada para gerar um grafo), o formato do
+arquivo de entrada é diferente e há peculiaridades que devem ser observadas, por exemplo: a existência ou não de um
+vértice fonte e/ou destino, os dados em cada aresta do grafo;
+2 - (Tarefa 3) cada algoritmo é completamente diferente aos demais (algoritmos de MST, de caminhos e de fluxos);
+3 - (Tarefa 4) cada aplicação tem um formato diferente para o arquivo de saída.
+
+* O que mais pode ser automatizado na classe Application?
+O mapeamento dos algoritmos (map<algoritmo, versão>) e o despacho sequencial das tarefas;
+
+* Como o usuário fica ciente do que está ocorrendo?
+1 - A cada tarefa iniciada, é exibida sua descrição. Ao término da tarefa, mostra-se o tempo gasto;
+2 - Ao concluir todas as tarefas, é exibido o tempo total da execução de toda a aplicação.
