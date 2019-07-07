@@ -30,7 +30,7 @@
 #include "core/graph.h"
 
 template<class AIn, class AOut>
-class PathsApp : public GraphApp2<AIn, AOut> {
+class PathsApp : public GraphApp<AIn, AOut> {
 
     std::tuple<Graph, unsigned int> createGraph(const std::string &input) {
         return {Graph(), 0};

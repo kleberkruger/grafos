@@ -18,6 +18,7 @@ CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o: ../src/flowsapp.h
 CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/core/application.h
 CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/core/graph.h
 CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/core/graphapp.h
+CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/flowsapp.h
 CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/mstapp.h
 

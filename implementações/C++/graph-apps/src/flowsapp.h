@@ -26,21 +26,48 @@
 #define GRAPH_APPS_FLOWSAPP_H
 
 
+#include <tuple>
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class FlowsApp : public GraphApp2<
-        TypeGroup<const Graph &, unsigned int, unsigned int>, TypeGroup<Graph, unsigned long>> {
+class FlowsApp : public GraphApp<
+        std::tuple<const Graph &, unsigned int, unsigned int>, std::tuple<Graph, unsigned long>> {
+public:
+
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version) override {
+
+        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
+        auto text = runTask("reading input file", &Application::readInputFile, inputFilePath);
+        auto input = runTask("creating graph", [&]() { return createGraph(text); });
+        auto r = runTask("running algorithm", alg.execute, std::get<0>(input), std::get<1>(input), std::get<2>(input));
+        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
+    }
 
     std::tuple<Graph, unsigned int, unsigned int> createGraph(const std::string &input) {
         return {Graph(), 0, 0};
     }
 
-    std::tuple<Graph, unsigned long> graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target) {
+    static std::tuple<Graph, unsigned long>
+    graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target) {
         return {Graph(), 0};
     }
 
     void printOutput(const Graph &graph, unsigned long total) {}
+
+    const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<Graph, unsigned long>(
+            const Graph &, unsigned int, unsigned int)>>> getAlgorithmMap() override {
+
+        auto alg1 = {
+                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm),
+                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm)};
+        auto alg2 = {
+                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm),
+                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm)};
+
+        return {{"kruskal", alg1},
+                {"prim", alg1}};
+    }
 };
 
 

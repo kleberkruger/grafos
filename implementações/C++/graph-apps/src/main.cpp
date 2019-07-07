@@ -23,9 +23,11 @@
  */
 
 #include "mstapp.h"
+#include "flowsapp.h"
 
 int main(int argc, char *argv[]) {
     MSTApp().start(argv[1], argv[3], argv[4], 0);
+    FlowsApp().start(argv[1], argv[3], argv[4], 0);
 
 //    // one, one
 //    GraphApp2<int, bool>().do_something(1, true);
