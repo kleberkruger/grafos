@@ -29,13 +29,17 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class FlowsApp : public GraphApp {
+class FlowsApp : public GraphApp<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)> {
 
-    std::tuple<Graph, unsigned int, unsigned int> createGraph(const std::string &input);
+    std::tuple<Graph, unsigned int, unsigned int> createGraph(const std::string &input) {
+        return {Graph(), 0, 0};
+    }
 
-    std::tuple<Graph, unsigned long> graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target);
+    std::tuple<Graph, unsigned long> graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target) {
+        return {Graph(), 0};
+    }
 
-    void printOutput(const Graph &graph, unsigned long total);
+    void printOutput(const Graph &graph, unsigned long total) {}
 };
 
 

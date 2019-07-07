@@ -1,15 +1,3 @@
-#include <utility>
-
-#include <utility>
-
-#include <utility>
-
-#include <utility>
-
-#include <utility>
-
-#include <utility>
-
 /*
  * MIT License
  *
@@ -42,12 +30,14 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 #include "application.h"
 #include "graph.h"
 
 template<class F>
 struct Algorithm {
+
     std::function<F> execute;
     std::string name;
 
@@ -55,45 +45,26 @@ struct Algorithm {
                                                                        name(std::move(name)) {}
 };
 
+template<class F>
 class GraphApp : public Application {
 public:
 
-    void start(const std::string &algorithmName, const std::string &inputFilePath,
-               const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) {
+    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+                       const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) = 0;
 
-        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
-        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
-        auto graph = runTask("creating graph", [&]() { return this->createGraph(input); });
-        auto r = runTask("running algorithm", alg.execute, graph);
-        runTask("print output", [&]() { this->printOutput(std::get<0>(r), std::get<1>(r)); });
-    }
+    virtual const std::unordered_map<std::string, std::vector<Algorithm<F>>> getAlgorithmMap() = 0;
 
-    const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<double, Graph>(const Graph &graph)>>>
-    getAlgorithmMap() {
+    const Algorithm<F> selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+        auto &map = getAlgorithmMap();
+        auto it = map.find(algorithmName);
 
-        auto alg1 = {Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm),
-                     Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm)};
-        auto alg2 = {Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm),
-                     Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm),
-                     Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm)};
+        if (it == map.end()) {
+            throw std::invalid_argument("Incorrect algorithm name");
+        } else if (version >= (*it).second.size()) {
+            throw std::invalid_argument("Incorrect version to " + algorithmName);
+        }
 
-        return {{"kruskal", alg1},
-                {"prim",    alg1}};
-    }
-
-    const Algorithm<std::tuple<double, Graph>(const Graph &graph)>
-    selectAlgorithm(const std::string &algorithmName, unsigned short version) {
-        return getAlgorithmMap().at(algorithmName)[version];
-    }
-
-    Graph createGraph(const std::string &input) {
-        return Graph();
-    }
-
-    void printOutput(const double total, const Graph &mst) {}
-
-    static std::tuple<double, Graph> graphAlgorithm(const Graph &graph) {
-        return {0, Graph()};
+        return map.at(algorithmName)[version];
     }
 
 protected:

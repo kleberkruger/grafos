@@ -29,14 +29,38 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class MSTApp : public GraphApp {
+class MSTApp : public GraphApp<std::tuple<double, Graph>(const Graph &)> {
 public:
 
-    Graph createGraph(const std::string &input);
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version) override {
 
-    static std::tuple<double, Graph> graphAlgorithm(const Graph &graph);
+        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
+        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
+        auto graph = runTask("creating graph", [&]() { return createGraph(input); });
+        auto r = runTask("running algorithm", alg.execute, graph);
+        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
+    }
 
-    static void printOutput(const double total, const Graph &mst);
+    const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<double, Graph>(const Graph &)>>>
+    getAlgorithmMap() override {
+
+        auto alg1 = {Algorithm<std::tuple<double, Graph>(const Graph &)>(mst),
+                     Algorithm<std::tuple<double, Graph>(const Graph &)>(mst)};
+        auto alg2 = {Algorithm<std::tuple<double, Graph>(const Graph &)>(mst),
+                     Algorithm<std::tuple<double, Graph>(const Graph &)>(mst)};
+
+        return {{"kruskal", alg1},
+                {"prim",    alg1}};
+    }
+
+private:
+
+    static Graph createGraph(const std::string &input) { return Graph(); }
+
+    static void printOutput(const double total, const Graph &mst) {}
+
+    static std::tuple<double, Graph> mst(const Graph &graph) { return {0, Graph()}; }
 };
 
 

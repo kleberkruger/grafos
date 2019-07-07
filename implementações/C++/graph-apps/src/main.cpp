@@ -22,11 +22,11 @@
  * SOFTWARE.
  */
 
-#include "core/graphapp.h"
+#include "mstapp.h"
 
 int main(int argc, char *argv[]) {
 
-    GraphApp().start(argv[1], argv[3], argv[4], 0);
+    MSTApp().start(argv[1], argv[3], argv[4], 0);
 
     return EXIT_SUCCESS;
 }
