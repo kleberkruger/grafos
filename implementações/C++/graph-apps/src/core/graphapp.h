@@ -29,6 +29,7 @@
 #include <functional>
 #include <iostream>
 #include <string>
+#include <tuple>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -55,6 +56,171 @@ public:
     virtual const std::unordered_map<std::string, std::vector<Algorithm<F>>> getAlgorithmMap() = 0;
 
     const Algorithm<F> selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+        auto &map = getAlgorithmMap();
+        auto it = map.find(algorithmName);
+
+        if (it == map.end()) {
+            throw std::invalid_argument("Incorrect algorithm name");
+        } else if (version >= (*it).second.size()) {
+            throw std::invalid_argument("Incorrect version to " + algorithmName);
+        }
+
+        return map.at(algorithmName)[version];
+    }
+
+protected:
+
+    static constexpr unsigned short DEFAULT_VERSION = std::numeric_limits<unsigned short>::max();
+};
+
+
+template<typename...ArgsT>
+void show_types(ArgsT...) {
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+template<typename... TypesT>
+struct TypeGroup;
+
+template<typename...>
+class GraphApp2;
+
+//template<
+//        typename InputTypes,
+//        typename OutputTypes
+//>
+//class GraphApp2<InputTypes, OutputTypes> : public Application {
+//public:
+//
+//    void do_something(InputTypes input, OutputTypes output) {
+//        show_types(input);
+//        show_types(output);
+//    }
+//
+//    using GraphAlgorithm = Algorithm<OutputTypes>(InputTypes);
+//
+//    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+//                       const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) = 0;
+//
+//    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() {};
+//
+//    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+//        auto &map = getAlgorithmMap();
+//        auto it = map.find(algorithmName);
+//
+//        if (it == map.end()) {
+//            throw std::invalid_argument("Incorrect algorithm name");
+//        } else if (version >= (*it).second.size()) {
+//            throw std::invalid_argument("Incorrect version to " + algorithmName);
+//        }
+//
+//        return map.at(algorithmName)[version];
+//    }
+//
+//protected:
+//
+//    static constexpr unsigned short DEFAULT_VERSION = std::numeric_limits<unsigned short>::max();
+//};
+
+template<
+        template<typename...> class TypeGroupT,
+        typename InputTypes,
+        typename...OutputTypes
+>
+class GraphApp2<InputTypes, TypeGroupT<OutputTypes...>> : public Application {
+public:
+
+    void do_something(InputTypes input, OutputTypes... output) {
+        show_types(input);
+        show_types(output...);
+    }
+
+    using GraphAlgorithm = Algorithm<TypeGroupT<OutputTypes...>(InputTypes)>;
+
+    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+                       const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) = 0;
+
+    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() {};
+
+    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+        auto &map = getAlgorithmMap();
+        auto it = map.find(algorithmName);
+
+        if (it == map.end()) {
+            throw std::invalid_argument("Incorrect algorithm name");
+        } else if (version >= (*it).second.size()) {
+            throw std::invalid_argument("Incorrect version to " + algorithmName);
+        }
+
+        return map.at(algorithmName)[version];
+    }
+
+protected:
+
+    static constexpr unsigned short DEFAULT_VERSION = std::numeric_limits<unsigned short>::max();
+};
+
+template<
+        template<typename...> class TypeGroupT,
+        typename...InputTypes,
+        typename OutputTypes
+>
+class GraphApp2<TypeGroupT<InputTypes...>, OutputTypes> : public Application {
+public:
+
+    void do_something(InputTypes...input, OutputTypes output) {
+        show_types(input...);
+        show_types(output);
+    }
+
+    using GraphAlgorithm = Algorithm<OutputTypes(InputTypes...)>;
+
+    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+                       const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) = 0;
+
+    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() {};
+
+    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+        auto &map = getAlgorithmMap();
+        auto it = map.find(algorithmName);
+
+        if (it == map.end()) {
+            throw std::invalid_argument("Incorrect algorithm name");
+        } else if (version >= (*it).second.size()) {
+            throw std::invalid_argument("Incorrect version to " + algorithmName);
+        }
+
+        return map.at(algorithmName)[version];
+    }
+
+protected:
+
+    static constexpr unsigned short DEFAULT_VERSION = std::numeric_limits<unsigned short>::max();
+};
+
+template<
+        template<typename...> class TypeGroupT,
+        typename...InputTypes,
+        typename...OutputTypes
+>
+class GraphApp2<TypeGroupT<InputTypes...>, TypeGroupT<OutputTypes...>> : public Application {
+public:
+
+    using GraphAlgorithm = Algorithm<TypeGroupT<OutputTypes...>(InputTypes...)>;
+
+    void do_something(InputTypes...input, OutputTypes...output) {
+        show_types(input...);
+        show_types(output...);
+    }
+
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) {
+
+    }
+
+    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() {};
+
+    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
         auto &map = getAlgorithmMap();
         auto it = map.find(algorithmName);
 

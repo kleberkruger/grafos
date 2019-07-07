@@ -29,16 +29,16 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-template<class F>
-class PathsApp : public GraphApp<F> {
+template<class AIn, class AOut>
+class PathsApp : public GraphApp2<AIn, AOut> {
 
     std::tuple<Graph, unsigned int> createGraph(const std::string &input) {
         return {Graph(), 0};
     }
 };
 
-class PathsUniqueApp : public PathsApp<std::tuple<std::vector<double>, std::vector<unsigned int>>(
-        const Graph &, unsigned int)> {
+class PathsUniqueApp : public PathsApp<TypeGroup<const Graph &, unsigned int>,
+        TypeGroup<std::vector<double>, std::vector<unsigned int>>> {
 
     std::tuple<std::vector<double>, std::vector<unsigned int>> graphAlgorithm(const Graph &graph, unsigned int source) {
         return {std::vector<double>(), std::vector<unsigned int>()};
@@ -50,7 +50,7 @@ class PathsUniqueApp : public PathsApp<std::tuple<std::vector<double>, std::vect
 template<typename T>
 using matrix = std::vector<std::vector<T>>;
 
-class PathsMultipleApp : public PathsApp<std::tuple<matrix<double>, matrix<unsigned int>>(const Graph &)> {
+class PathsMultipleApp : public PathsApp<const Graph &, TypeGroup<matrix<double>, matrix<unsigned int>>> {
 
     std::tuple<matrix<double>, matrix<unsigned int>> graphAlgorithm(const Graph &graph) {
         return {matrix<double>(), matrix<unsigned int>()};

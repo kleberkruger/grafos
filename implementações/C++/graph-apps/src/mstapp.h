@@ -29,7 +29,7 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class MSTApp : public GraphApp<std::tuple<double, Graph>(const Graph &)> {
+class MSTApp : public GraphApp2<const Graph &, std::tuple<double, Graph>> {
 public:
 
     void start(const std::string &algorithmName, const std::string &inputFilePath,

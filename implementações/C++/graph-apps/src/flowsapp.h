@@ -29,7 +29,8 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class FlowsApp : public GraphApp<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)> {
+class FlowsApp : public GraphApp2<
+        TypeGroup<const Graph &, unsigned int, unsigned int>, TypeGroup<Graph, unsigned long>> {
 
     std::tuple<Graph, unsigned int, unsigned int> createGraph(const std::string &input) {
         return {Graph(), 0, 0};
