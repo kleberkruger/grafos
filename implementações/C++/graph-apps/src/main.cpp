@@ -22,11 +22,11 @@
  * SOFTWARE.
  */
 
-#include <iostream>
+#include "core/graphapp.h"
 
-int main() {
+int main(int argc, char *argv[]) {
 
-    std::cout << "Hello, World!" << std::endl;
+    GraphApp().start(argv[1], argv[3], argv[4], 0);
 
     return EXIT_SUCCESS;
 }

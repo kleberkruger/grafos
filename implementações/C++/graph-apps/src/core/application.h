@@ -110,17 +110,23 @@ private:
     std::vector<Task> tasks;
 
     Task initializeTask(const std::string &description) {
-        printf("--------------------------------------------------\n"
-               "Initializing task: %s\n", description.c_str());
+        printf("\n"
+               "================================================================================\n"
+               " Initializing task: %s\n"
+               "--------------------------------------------------------------------------------\n",
+               description.c_str());
+
         Task task(description);
         tasks.push_back(task);
+
         return task;
     }
 
     static void finalizeTask(Task &task) {
         task.finish = std::chrono::high_resolution_clock::now();
-        printf("Finalizing task: %s (%lld)\n"
-               "--------------------------------------------------\n", task.description.c_str(),
+        printf(" Finishing task : %s (%lld ms)\n"
+               "================================================================================\n",
+               task.description.c_str(),
                std::chrono::duration_cast<std::chrono::milliseconds>(task.finish - task.start).count());
     }
 };

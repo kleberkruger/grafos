@@ -1,3 +1,15 @@
+#include <utility>
+
+#include <utility>
+
+#include <utility>
+
+#include <utility>
+
+#include <utility>
+
+#include <utility>
+
 /*
  * MIT License
  *
@@ -26,13 +38,63 @@
 #define GRAPH_APPS_GRAPHAPP_H
 
 
+#include <functional>
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
 #include "application.h"
+#include "graph.h"
+
+template<class F>
+struct Algorithm {
+    std::function<F> execute;
+    std::string name;
+
+    explicit Algorithm(std::function<F> func, std::string name = "") : execute(std::move(func)),
+                                                                       name(std::move(name)) {}
+};
 
 class GraphApp : public Application {
 public:
 
-    virtual void start(const std::string &algorithm, const std::string &inputFilePath,
-                       const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) = 0;
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version = DEFAULT_VERSION) {
+
+        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
+        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
+        auto graph = runTask("creating graph", [&]() { return this->createGraph(input); });
+        auto r = runTask("running algorithm", alg.execute, graph);
+        runTask("print output", [&]() { this->printOutput(std::get<0>(r), std::get<1>(r)); });
+    }
+
+    const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<double, Graph>(const Graph &graph)>>>
+    getAlgorithmMap() {
+
+        auto alg1 = {Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm),
+                     Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm)};
+        auto alg2 = {Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm),
+                     Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm),
+                     Algorithm<std::tuple<double, Graph>(const Graph &graph)>(graphAlgorithm)};
+
+        return {{"kruskal", alg1},
+                {"prim",    alg1}};
+    }
+
+    const Algorithm<std::tuple<double, Graph>(const Graph &graph)>
+    selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+        return getAlgorithmMap().at(algorithmName)[version];
+    }
+
+    Graph createGraph(const std::string &input) {
+        return Graph();
+    }
+
+    void printOutput(const double total, const Graph &mst) {}
+
+    static std::tuple<double, Graph> graphAlgorithm(const Graph &graph) {
+        return {0, Graph()};
+    }
 
 protected:
 

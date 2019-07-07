@@ -29,8 +29,32 @@ graphapp.h
 /Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.h
 
 /Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.h
+utility
+-
+utility
+-
+utility
+-
+utility
+-
+utility
+-
+utility
+-
+functional
+-
+iostream
+-
+string
+-
+unordered_map
+-
+vector
+-
 application.h
 /Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/application.h
+graph.h
+/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graph.h
 
 /Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/flowsapp.cpp
 flowsapp.h
@@ -41,6 +65,10 @@ core/graphapp.h
 /Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.h
 core/graph.h
 /Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graph.h
+
+/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/main.cpp
+core/graphapp.h
+/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.h
 
 /Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/mstapp.cpp
 mstapp.h

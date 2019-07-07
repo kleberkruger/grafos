@@ -12,28 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac9a63c0-e4a7-4005-98e2-f7c854023c9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/kleberkruger.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/graph-apps.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/t1/in_kruger.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/t2/in_kruger.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/t3/in_kruger.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/application.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/graph.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/graph.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/graphapp.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/graphapp.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/flowsapp.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/flowsapp.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mstapp.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mstapp.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pathsapp.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pathsapp.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/application.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/graphapp.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/graphapp.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +28,49 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/core/graphapp.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="70" column="40" lean-forward="true" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#1320#1341#0" expanded="true" />
+                <element signature="e#1476#1485#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/application.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="126" column="45" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
+              <folding>
+                <element signature="e#1206#1223#0" expanded="true" />
+                <element signature="e#1739#1769#0" expanded="true" />
+                <element signature="e#1849#1879#0" expanded="true" />
+                <element signature="e#2217#2247#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mstapp.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="72" />
+              <folding>
+                <element signature="e#1196#1222#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -64,16 +87,17 @@
         <option value="$PROJECT_DIR$/src/core/graph.h" />
         <option value="$PROJECT_DIR$/src/flowsapp.h" />
         <option value="$PROJECT_DIR$/src/pathsapp.h" />
-        <option value="$PROJECT_DIR$/src/core/application.h" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/mstapp.h" />
-        <option value="$PROJECT_DIR$/src/core/graphapp.h" />
         <option value="$PROJECT_DIR$/src/core/graphapp.cpp" />
         <option value="$PROJECT_DIR$/dataset/t1/in_cormen.txt" />
         <option value="$PROJECT_DIR$/dataset/t3/in_cormen.txt" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/core/application.h" />
+        <option value="$PROJECT_DIR$/src/core/graphapp.h" />
       </list>
     </option>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
     <option name="x" value="1680" />
     <option name="y" value="23" />
@@ -99,6 +123,17 @@
               <item name="graph_apps" type="b2602c69:ProjectViewProjectNode" />
               <item name="graph-apps" type="462c0819:PsiDirectoryNode" />
               <item name="dataset" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="graph_apps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="graph-apps" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="graph_apps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="graph-apps" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -157,24 +192,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1562397948749</updated>
-      <workItem from="1562397950472" duration="14085000" />
+      <workItem from="1562397950472" duration="32833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14085000" />
+    <option name="totallyTimeSpent" value="32833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="23" width="2560" height="1014" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15448768" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15448768" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="CMake" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Messages" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -285,13 +321,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/flowsapp.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -306,37 +335,6 @@
           <folding>
             <element signature="e#1200#1226#0" expanded="true" />
             <element signature="e#1678#1690#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mstapp.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="38" column="66" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
-          <folding>
-            <element signature="e#1196#1222#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flowsapp.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="37" column="62" lean-forward="true" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
-          <folding>
-            <element signature="e#1200#1226#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/application.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="49" column="4" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-          <folding>
-            <element signature="e#1206#1223#0" expanded="true" />
-            <element signature="e#1739#1769#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -359,13 +357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/graphapp.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="34" column="104" lean-forward="true" selection-start-line="34" selection-start-column="104" selection-end-line="34" selection-end-column="104" />
         </state>
       </provider>
     </entry>
@@ -394,6 +385,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="786" column="14" selection-start-line="786" selection-start-column="14" selection-end-line="786" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/functional">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="1718" selection-start-line="1718" selection-end-line="1718" selection-end-column="39" />
+          <folding>
+            <element signature="e#44124#44135#0" expanded="true" />
+            <element signature="e#49495#49526#0" expanded="true" />
+            <element signature="e#53732#53763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flowsapp.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="37" column="62" lean-forward="true" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
+          <folding>
+            <element signature="e#1200#1226#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mstapp.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="72" />
+          <folding>
+            <element signature="e#1196#1222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/application.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="126" column="45" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
+          <folding>
+            <element signature="e#1206#1223#0" expanded="true" />
+            <element signature="e#1739#1769#0" expanded="true" />
+            <element signature="e#1849#1879#0" expanded="true" />
+            <element signature="e#2217#2247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/graphapp.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="70" column="40" lean-forward="true" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#1320#1341#0" expanded="true" />
+            <element signature="e#1476#1485#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

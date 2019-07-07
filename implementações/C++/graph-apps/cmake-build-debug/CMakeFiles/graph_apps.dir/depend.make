@@ -5,6 +5,7 @@ CMakeFiles/graph_apps.dir/src/core/graph.cpp.o: ../src/core/graph.cpp
 CMakeFiles/graph_apps.dir/src/core/graph.cpp.o: ../src/core/graph.h
 
 CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o: ../src/core/application.h
+CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o: ../src/core/graph.h
 CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o: ../src/core/graphapp.cpp
 CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o: ../src/core/graphapp.h
 
@@ -14,6 +15,9 @@ CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o: ../src/core/graphapp.h
 CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o: ../src/flowsapp.cpp
 CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o: ../src/flowsapp.h
 
+CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/core/application.h
+CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/core/graph.h
+CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/core/graphapp.h
 CMakeFiles/graph_apps.dir/src/main.cpp.o: ../src/main.cpp
 
 CMakeFiles/graph_apps.dir/src/mstapp.cpp.o: ../src/core/application.h
