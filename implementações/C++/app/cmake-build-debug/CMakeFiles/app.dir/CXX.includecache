@@ -6,8 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/app/main.cpp
-string
+/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/app/main2.cpp
+type_traits
+-
+functional
 -
 iostream
 -

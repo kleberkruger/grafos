@@ -51,92 +51,141 @@ void show_types(Args...) {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-template<typename... TypesT>
+template<typename... Types>
 struct TypeGroup;
 
 template<typename...>
 class GraphApp;
 
+/**
+ * T1, T2
+ *
+ * @tparam InputTypes
+ * @tparam OutputTypes
+ */
 template<typename InputTypes, typename OutputTypes>
-class GraphApp<InputTypes, OutputTypes> : public Application {
-public:
+class GraphApp<InputTypes, OutputTypes>
+        : public GraphApp<TypeGroup<InputTypes>, TypeGroup<OutputTypes>> {
+//        : public Application {
+//public:
+//
+////    using GraphAlgorithm = Algorithm<OutputTypes(InputTypes)>;
+//    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes>())(InputTypes)>;
+//
+//    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+//                       const std::string &outputFilePath, unsigned short version) = 0;
+//
+//    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
 
-    using GraphAlgorithm = Algorithm<OutputTypes(InputTypes)>;
-
-    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
-                       const std::string &outputFilePath, unsigned short version) = 0;
-
-    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
-
-    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
-        auto &map = getAlgorithmMap();
-        auto it = map.find(algorithmName);
-
-        if (it == map.end()) {
-            throw std::invalid_argument("Incorrect algorithm name");
-        } else if (version >= (*it).second.size()) {
-            throw std::invalid_argument("Incorrect version to " + algorithmName);
-        }
-
-        return map.at(algorithmName)[version];
-    }
+//    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+//        auto &map = getAlgorithmMap();
+//        auto it = map.find(algorithmName);
+//
+//        if (it == map.end()) {
+//            throw std::invalid_argument("Incorrect algorithm name");
+//        } else if (version >= (*it).second.size()) {
+//            throw std::invalid_argument("Incorrect version to " + algorithmName);
+//        }
+//
+//        return map.at(algorithmName)[version];
+//    }
 };
 
+/**
+ * T1, std::tuple<T2>
+ *
+ * @tparam TypeGroupT
+ * @tparam InputTypes
+ * @tparam OutputTypes
+ */
 template<template<typename...> class TypeGroupT, typename InputTypes, typename...OutputTypes>
-class GraphApp<InputTypes, TypeGroupT<OutputTypes...>> : public Application {
-public:
+class GraphApp<InputTypes, TypeGroupT<OutputTypes...>>
+        : public GraphApp<TypeGroup<InputTypes>, TypeGroup<OutputTypes...>> {
+//        : public Application {
+//public:
+//
+//    using GraphAlgorithm = Algorithm<TypeGroupT<OutputTypes...>(InputTypes)>;
+////    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes...>())(InputTypes)>;
+//
+//    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+//                       const std::string &outputFilePath, unsigned short version) = 0;
+//
+//    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
+//
+//    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+//        auto &map = getAlgorithmMap();
+//        auto it = map.find(algorithmName);
+//
+//        if (it == map.end()) {
+//            throw std::invalid_argument("Incorrect algorithm name");
+//        } else if (version >= (*it).second.size()) {
+//            throw std::invalid_argument("Incorrect version to " + algorithmName);
+//        }
+//
+//        return map.at(algorithmName)[version];
+//    }
 
-    using GraphAlgorithm = Algorithm<TypeGroupT<OutputTypes...>(InputTypes)>;
-
-    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
-                       const std::string &outputFilePath, unsigned short version) = 0;
-
-    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
-
-    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
-        auto &map = getAlgorithmMap();
-        auto it = map.find(algorithmName);
-
-        if (it == map.end()) {
-            throw std::invalid_argument("Incorrect algorithm name");
-        } else if (version >= (*it).second.size()) {
-            throw std::invalid_argument("Incorrect version to " + algorithmName);
-        }
-
-        return map.at(algorithmName)[version];
-    }
 };
 
+/**
+ * std::tuple<T1>, T2
+ *
+ * @tparam TypeGroupT
+ * @tparam InputTypes
+ * @tparam OutputTypes
+ */
 template<template<typename...> class TypeGroupT, typename...InputTypes, typename OutputTypes>
-class GraphApp<TypeGroupT<InputTypes...>, OutputTypes> : public Application {
-public:
+class GraphApp<TypeGroupT<InputTypes...>, OutputTypes>
+        : public GraphApp<TypeGroup<InputTypes...>, TypeGroup<OutputTypes>> {
+//        : public Application {
+//public:
+//
+////    using GraphAlgorithm = Algorithm<OutputTypes(InputTypes...)>;
+//    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes>())(InputTypes...)>;
+//
+//    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+//                       const std::string &outputFilePath, unsigned short version) = 0;
+//
+//    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
 
-    using GraphAlgorithm = Algorithm<OutputTypes(InputTypes...)>;
-
-    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
-                       const std::string &outputFilePath, unsigned short version) = 0;
-
-    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
-
-    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
-        auto &map = getAlgorithmMap();
-        auto it = map.find(algorithmName);
-
-        if (it == map.end()) {
-            throw std::invalid_argument("Incorrect algorithm name");
-        } else if (version >= (*it).second.size()) {
-            throw std::invalid_argument("Incorrect version to " + algorithmName);
-        }
-
-        return map.at(algorithmName)[version];
-    }
+//    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+//        auto &map = getAlgorithmMap();
+//        auto it = map.find(algorithmName);
+//
+//        if (it == map.end()) {
+//            throw std::invalid_argument("Incorrect algorithm name");
+//        } else if (version >= (*it).second.size()) {
+//            throw std::invalid_argument("Incorrect version to " + algorithmName);
+//        }
+//
+//        return map.at(algorithmName)[version];
+//    }
 };
 
+/**
+ * std::tuple<T1>, std::tuple<T2>
+ *
+ * @tparam TypeGroupT
+ * @tparam InputTypes
+ * @tparam OutputTypes
+ */
 template<template<typename...> class TypeGroupT, typename...InputTypes, typename...OutputTypes>
 class GraphApp<TypeGroupT<InputTypes...>, TypeGroupT<OutputTypes...>> : public Application {
+protected:
+
+    template<typename... T>
+    static auto ReturnType() {
+        if constexpr (((std::tuple_size_v<std::tuple<T...>>) > 1)) {
+            return std::tuple<T...>();
+        } else {
+            return std::get<0>(std::tuple<T...>());
+        }
+    }
+
 public:
 
-    using GraphAlgorithm = Algorithm<TypeGroupT<OutputTypes...>(InputTypes...)>;
+//    using GraphAlgorithm = Algorithm<TypeGroup<OutputTypes>...>(InputTypes...);
+    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes...>())(InputTypes...)>;
 
     virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
                        const std::string &outputFilePath, unsigned short version) = 0;
@@ -144,6 +193,7 @@ public:
     virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
 
     const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+
         auto &map = getAlgorithmMap();
         auto it = map.find(algorithmName);
 

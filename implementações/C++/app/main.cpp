@@ -1,119 +1,179 @@
-//struct base {
-//    virtual ~base() {} /* ... */
+//#include <functional>
+//#include <iostream>
+//#include <tuple>
+//
+//using std::cout;
+//using std::endl;
+//using std::tuple;
+//
+//template<typename...Args>
+//void show_types(Args...) {
+//    cout << __PRETTY_FUNCTION__ << endl;
+//}
+//
+//template<typename... Param>
+//struct ParamGroup;
+//
+//template<typename...>
+//struct App;
+//
+///**
+// * T1, T2
+// *
+// * @tparam T1
+// * @tparam T2
+// */
+//template<typename T1, typename T2>
+//struct App<T1, T2>
+//        : public App<ParamGroup<T1>, ParamGroup<T2>> {
+//
+////    virtual void do_something(T1 group1, T2 group2) {
+////        show_types(group1);
+////        show_types(group2);
+////    }
 //};
 //
-//template<typename T, typename E = void>
-//struct A;
+///**
+// * T1, tuple<T2>
+// *
+// * @tparam ParamGroupT
+// * @tparam T1
+// * @tparam TypeGroup2
+// */
+//template<
+//        template<typename...> class ParamGroupT,
+//        typename T1,
+//        typename...TypeGroup2
+//>
+//struct App<T1, ParamGroupT<TypeGroup2...>>
+//        : public App<ParamGroup<T1>, ParamGroup<TypeGroup2...>> {
 //
-//template<typename T> // implementation for types derived from base
-//struct A<T, typename std::enable_if<std::is_base_of<base, T>::value, void>::type> {
-//    static void identify() { std::cout << "T is a derived class of base\n"; }
+////    virtual void do_something(T1 group1, TypeGroup2...group2) {
+////        show_types(group1);
+////        show_types(group2...);
+////    }
 //};
 //
-//// if required
-//template<typename T> //  implementation for types which are not derived from base
-//struct A<T, typename std::enable_if<!std::is_base_of<base, T>::value, void>::type> {
-//    static void identify() { std::cout << "T is not derived from base\n"; }
-//};
-
-//template<class _Fp>
-//class myfunction; // undefined
+///**
+// * tuple<T1>, T2
+// *
+// * @tparam MyTypeGroupingT
+// * @tparam TypeGroup1
+// * @tparam T2
+// */
+//template<
+//        template<typename...> class MyTypeGroupingT,
+//        typename...TypeGroup1,
+//        typename T2
+//>
+//struct App<MyTypeGroupingT<TypeGroup1...>, T2>
+//        : public App<ParamGroup<TypeGroup1...>, ParamGroup<T2>> {
 //
-//template<class _Rp, class ..._ArgTypes>
-//class myfunction<_Rp(_ArgTypes...)>
-//        : public std::__function::__maybe_derive_from_unary_function<_Rp(_ArgTypes...)>,
-//          public std::__function::__maybe_derive_from_binary_function<_Rp(_ArgTypes...)> {
+////    virtual void do_something(TypeGroup1...group1, T2 group2) {
+////        show_types(group1...);
+////        show_types(group2);
+////    }
 //};
-
-#include <functional>
-#include <string>
-#include <iostream>
-#include <tuple>
-
-template<typename...ArgsT>
-void show_types(ArgsT...) {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-template<typename InputTypes, typename OutputTypes>
-class AppBase {
-public:
-    void do_something(InputTypes input, OutputTypes output) {
-        show_types(input);
-        show_types(output);
-    }
-};
-
-template<typename... TypesT>
-struct TypeGroup;
-
-template<typename...>
-class GraphApp2;
-
-template<
-        typename InputTypes,
-        typename OutputTypes
->
-class GraphApp2<InputTypes, OutputTypes> : public AppBase<InputTypes, OutputTypes> {
-};
-
-template<
-        template<typename...> class TypeGroupT,
-        typename InputTypes,
-        typename...OutputTypes
->
-class GraphApp2<InputTypes, TypeGroupT<OutputTypes...>> : public AppBase<InputTypes, TypeGroupT<OutputTypes...>> {
-public:
-
-    void do_something(InputTypes input, OutputTypes... output) {
-        show_types(input);
-        show_types(output...);
-    }
-};
-
-template<
-        template<typename...> class TypeGroupT,
-        typename...InputTypes,
-        typename OutputTypes
->
-class GraphApp2<TypeGroupT<InputTypes...>, OutputTypes> : public AppBase<InputTypes..., OutputTypes>{
-public:
-
-    void do_something(InputTypes...input, OutputTypes output) {
-        show_types(input...);
-        show_types(output);
-    }
-};
-
-template<
-        template<typename...> class TypeGroupT,
-        typename...InputTypes,
-        typename...OutputTypes
->
-class GraphApp2<TypeGroupT<InputTypes...>, TypeGroupT<OutputTypes...>> :
-        public AppBase<TypeGroup<InputTypes...>, TypeGroup<OutputTypes...>>{
-
-public:
-
-    void do_something(InputTypes...input, OutputTypes...output) {
-        show_types(input...);
-        show_types(output...);
-    }
-};
-
-int main() {
-
-    // one, one
-    GraphApp2<int, bool>().do_something(1, true);
-    // one, group
-    GraphApp2<int, TypeGroup<double, bool>>().do_something(1, 3.0, true);
-    GraphApp2<int, TypeGroup<double, bool>>().do_something(1, 3.0, true);
-    // group, one
-    GraphApp2<TypeGroup<double, bool>, int>().do_something(3.0, true, 1);
-    // group, group
-    GraphApp2<TypeGroup<int, float>, TypeGroup<double, bool>>().do_something(1, 2.0, 3.0, true);
-    // group, group
-    GraphApp2<std::tuple<int>, std::tuple<float, int, int, double, bool>>().do_something(1, 2.0, 3, 4, 3.0, true);
-
-    return 0;
-}
+//
+///**
+// * tuple<T1>, tuple<T2>
+// *
+// * @tparam MyTypeGroupingT
+// * @tparam TypeGroup1
+// * @tparam TypeGroup2
+// */
+//template<
+//        template<typename...> class MyTypeGroupingT,
+//        typename...TypeGroup1,
+//        typename...TypeGroup2
+//>
+//struct App<MyTypeGroupingT<TypeGroup1...>, MyTypeGroupingT<TypeGroup2...>> {
+//
+//    virtual void do_something(TypeGroup1...group1, TypeGroup2...group2) {
+//        show_types(group1...);
+//        show_types(group2...);
+//    }
+//
+//    virtual void test1(TypeGroup1...group1, TypeGroup2...group2) = 0;
+//
+//////    virtual std::tuple<TypeGroup1...> test2(TypeGroup2...group2) = 0;
+////    template<typename R>
+////    virtual R test2(TypeGroup2...group2) = 0;
+////
+//////    virtual TypeGroup1 test2(TypeGroup2...group2) = 0;
+//////    virtual TypeGroup2... test2(TypeGroup1...group1) = 0;
+//};
+//
+//class Herdada : public App<int,
+//        std::tuple<float, bool>> {
+////        MyTypeGrouping<float, bool>> {
+//public:
+//
+//    virtual void test1(int i, float f, bool b) override {
+//        std::cout << "sem tuplas: " << i << ", " << f << ", " << b << std::endl;
+//    }
+//
+////    virtual void test1(int i, std::tuple<float, bool> t) override { // este override falha
+////        std::cout << "usando tuplas: " << i << ", " << std::get<0>(t) << ", " << std::get<1>(t) << std::endl;
+////    }
+//
+////    virtual std::tuple<int> test2(float f, bool b) {
+////        return {8};
+////    }
+////
+//////    virtual int test2(float f, bool b) override {
+//////        return 9;
+//////    }
+//};
+//
+////class Herdada2 : public App<void,
+////        std::tuple<float, bool>> {
+//////        MyTypeGrouping<float, bool>> {
+////public:
+////
+////    virtual void test1(void i, float f, bool b) override {
+////        std::cout << "sem tuplas: " << i << ", " << f << ", " << b << std::endl;
+////    }
+////
+////    virtual void test2(float f, bool b) override {}
+////};
+//
+//template <typename... T>
+//auto funcao(T... args) -> decltype(auto){
+//    std::cout << "hehehe" << std::endl;
+//    return 1;
+//}
+//
+//int main(int argc, char **argv) {
+//
+////    {
+////        DoesSomething<int, float> d;
+////        d.do_something(1, 2.0);
+////    }
+////
+////    {
+////        DoesSomething<int, MyTypeGrouping<double, bool>> d;
+////        d.do_something(1, 3.0, true);
+////    }
+////
+////    {
+////        DoesSomething<MyTypeGrouping<int, float>, bool> d;
+////        d.do_something(1, 2.0, true);
+////    }
+////
+////    {
+////        DoesSomething<MyTypeGrouping<int, float>, MyTypeGrouping<double, bool>> d;
+////        d.do_something(1, 2.0, 3.0, true);
+////    }
+////
+////    {
+////        DoesSomething<tuple<int>, tuple<float, int, int, double, bool>> d;
+////        d.do_something(1, 2.0, 3, 4, 3.0, true);
+////    }
+//
+//    Herdada h;
+//    h.test1(7, 5.6, true);
+//
+//    int a = funcao(5);
+//    std::cout << a << std::endl;
+//}

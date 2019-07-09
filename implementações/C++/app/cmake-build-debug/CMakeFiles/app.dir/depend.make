@@ -3,3 +3,5 @@
 
 CMakeFiles/app.dir/main.cpp.o: ../main.cpp
 
+CMakeFiles/app.dir/main2.cpp.o: ../main2.cpp
+

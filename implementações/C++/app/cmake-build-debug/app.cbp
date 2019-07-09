@@ -83,6 +83,9 @@
 		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/app/main.cpp">
 			<Option target="app"/>
 		</Unit>
+		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/app/main2.cpp">
+			<Option target="app"/>
+		</Unit>
 		<Unit filename="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/app/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

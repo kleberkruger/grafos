@@ -51,7 +51,7 @@ protected:
     using ReturnType = typename std::result_of<F(Args...)>::type;
 
     template<typename F, typename... Args>
-    typename std::enable_if<std::is_same<ReturnType<F, Args...>, void>::value>::type
+    typename std::enable_if_t<std::is_same_v<ReturnType<F, Args...>, void>>
     runTask(const std::string &description, F &&func, Args &&... args) {
         Task task = initializeTask(description);
         std::forward<decltype(func)>(func)(std::forward<decltype(args)>(args)...);
@@ -59,7 +59,7 @@ protected:
     }
 
     template<typename F, typename... Args>
-    typename std::enable_if<!std::is_same<ReturnType<F, Args...>, void>::value, ReturnType<F, Args...>>::type
+    typename std::enable_if_t<!std::is_same_v<ReturnType<F, Args...>, void>, ReturnType<F, Args...>>
     runTask(const std::string &description, F &&func, Args &&... args) {
         Task task = initializeTask(description);
         auto ret = std::forward<decltype(func)>(func)(std::forward<decltype(args)>(args)...);
