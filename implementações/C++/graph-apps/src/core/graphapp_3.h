@@ -66,6 +66,29 @@ class GraphApp;
 template<typename InputTypes, typename OutputTypes>
 class GraphApp<InputTypes, OutputTypes>
         : public GraphApp<TypeGroup<InputTypes>, TypeGroup<OutputTypes>> {
+//        : public Application {
+//public:
+//
+////    using GraphAlgorithm = Algorithm<OutputTypes(InputTypes)>;
+//    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes>())(InputTypes)>;
+//
+//    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+//                       const std::string &outputFilePath, unsigned short version) = 0;
+//
+//    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
+
+//    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+//        auto &map = getAlgorithmMap();
+//        auto it = map.find(algorithmName);
+//
+//        if (it == map.end()) {
+//            throw std::invalid_argument("Incorrect algorithm name");
+//        } else if (version >= (*it).second.size()) {
+//            throw std::invalid_argument("Incorrect version to " + algorithmName);
+//        }
+//
+//        return map.at(algorithmName)[version];
+//    }
 };
 
 /**
@@ -78,6 +101,30 @@ class GraphApp<InputTypes, OutputTypes>
 template<template<typename...> class TypeGroupT, typename InputTypes, typename...OutputTypes>
 class GraphApp<InputTypes, TypeGroupT<OutputTypes...>>
         : public GraphApp<TypeGroup<InputTypes>, TypeGroup<OutputTypes...>> {
+//        : public Application {
+//public:
+//
+//    using GraphAlgorithm = Algorithm<TypeGroupT<OutputTypes...>(InputTypes)>;
+////    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes...>())(InputTypes)>;
+//
+//    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+//                       const std::string &outputFilePath, unsigned short version) = 0;
+//
+//    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
+//
+//    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+//        auto &map = getAlgorithmMap();
+//        auto it = map.find(algorithmName);
+//
+//        if (it == map.end()) {
+//            throw std::invalid_argument("Incorrect algorithm name");
+//        } else if (version >= (*it).second.size()) {
+//            throw std::invalid_argument("Incorrect version to " + algorithmName);
+//        }
+//
+//        return map.at(algorithmName)[version];
+//    }
+
 };
 
 /**
@@ -90,6 +137,29 @@ class GraphApp<InputTypes, TypeGroupT<OutputTypes...>>
 template<template<typename...> class TypeGroupT, typename...InputTypes, typename OutputTypes>
 class GraphApp<TypeGroupT<InputTypes...>, OutputTypes>
         : public GraphApp<TypeGroup<InputTypes...>, TypeGroup<OutputTypes>> {
+//        : public Application {
+//public:
+//
+////    using GraphAlgorithm = Algorithm<OutputTypes(InputTypes...)>;
+//    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes>())(InputTypes...)>;
+//
+//    virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
+//                       const std::string &outputFilePath, unsigned short version) = 0;
+//
+//    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
+
+//    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+//        auto &map = getAlgorithmMap();
+//        auto it = map.find(algorithmName);
+//
+//        if (it == map.end()) {
+//            throw std::invalid_argument("Incorrect algorithm name");
+//        } else if (version >= (*it).second.size()) {
+//            throw std::invalid_argument("Incorrect version to " + algorithmName);
+//        }
+//
+//        return map.at(algorithmName)[version];
+//    }
 };
 
 /**
@@ -101,7 +171,7 @@ class GraphApp<TypeGroupT<InputTypes...>, OutputTypes>
  */
 template<template<typename...> class TypeGroupT, typename...InputTypes, typename...OutputTypes>
 class GraphApp<TypeGroupT<InputTypes...>, TypeGroupT<OutputTypes...>> : public Application {
-private:
+protected:
 
     template<typename... T>
     static auto ReturnType() {
@@ -114,6 +184,7 @@ private:
 
 public:
 
+//    using GraphAlgorithm = Algorithm<TypeGroup<OutputTypes>...>(InputTypes...);
     using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes...>())(InputTypes...)>;
 
     virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
