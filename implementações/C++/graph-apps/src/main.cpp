@@ -27,18 +27,7 @@
 
 int main(int argc, char *argv[]) {
     MSTApp().start(argv[1], argv[3], argv[4], 0);
-    FlowsApp().start(argv[1], argv[3], argv[4], 0);
-
-//    // one, one
-//    GraphApp2<int, bool>().do_something(1, true);
-//    // one, group
-//    GraphApp2<int, TypeGroup<double, bool>>().do_something(1, 3.0, true);
-//    // group, one
-//    GraphApp2<TypeGroup<double, bool>, int>().do_something(3.0, true, 1);
-//    // group, group
-//    GraphApp2<TypeGroup<int, float>, TypeGroup<double, bool>>().do_something(1, 2.0, 3.0, true);
-//    // group, group
-//    GraphApp2<std::tuple<int>, std::tuple<float, int, int, double, bool>>().do_something(1, 2.0, 3, 4, 3.0, true);
+//    FlowsApp().start(argv[1], argv[3], argv[4], 0);
 
     return EXIT_SUCCESS;
 }

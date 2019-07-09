@@ -56,11 +56,11 @@ public:
 
 private:
 
-    static Graph createGraph(const std::string &input) { return Graph(); }
+    Graph createGraph(const std::string &input) override { return Graph(); }
 
-    static void printOutput(const double total, const Graph &mst) {}
+    static void printOutput(const double total, Graph mst) {}
 
-    static std::tuple<double, Graph> mst(const Graph &graph) { return {0, Graph()}; }
+    static std::tuple<double, Graph> mst(Graph graph) { return {0, Graph()}; }
 };
 
 

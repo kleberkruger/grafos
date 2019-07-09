@@ -44,7 +44,7 @@ public:
         runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
     }
 
-    std::tuple<Graph, unsigned int, unsigned int> createGraph(const std::string &input) {
+    std::tuple<Graph, unsigned int, unsigned int> createGraph(const std::string &input) override {
         return {Graph(), 0, 0};
     }
 

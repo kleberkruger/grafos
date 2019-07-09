@@ -29,35 +29,35 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-template<class AIn, class AOut>
-class PathsApp : public GraphApp<AIn, AOut> {
-
-    std::tuple<Graph, unsigned int> createGraph(const std::string &input) {
-        return {Graph(), 0};
-    }
-};
-
-class PathsUniqueApp : public PathsApp<TypeGroup<const Graph &, unsigned int>,
-        TypeGroup<std::vector<double>, std::vector<unsigned int>>> {
-
-    std::tuple<std::vector<double>, std::vector<unsigned int>> graphAlgorithm(const Graph &graph, unsigned int source) {
-        return {std::vector<double>(), std::vector<unsigned int>()};
-    }
-
-    void printOutput(const std::vector<double> &dist, std::vector<unsigned int> &pred) {}
-};
-
-template<typename T>
-using matrix = std::vector<std::vector<T>>;
-
-class PathsMultipleApp : public PathsApp<const Graph &, TypeGroup<matrix<double>, matrix<unsigned int>>> {
-
-    std::tuple<matrix<double>, matrix<unsigned int>> graphAlgorithm(const Graph &graph) {
-        return {matrix<double>(), matrix<unsigned int>()};
-    }
-
-    void printOutput(const matrix<double> &dist, matrix<unsigned int> &pred) {}
-};
+//template<class AIn, class AOut>
+//class PathsApp : public GraphApp<AIn, AOut> {
+//
+//    std::tuple<Graph, unsigned int> createGraph(const std::string &input) {
+//        return {Graph(), 0};
+//    }
+//};
+//
+//class PathsUniqueApp : public PathsApp<TypeGroup<const Graph &, unsigned int>,
+//        TypeGroup<std::vector<double>, std::vector<unsigned int>>> {
+//
+//    std::tuple<std::vector<double>, std::vector<unsigned int>> graphAlgorithm(const Graph &graph, unsigned int source) {
+//        return {std::vector<double>(), std::vector<unsigned int>()};
+//    }
+//
+//    void printOutput(const std::vector<double> &dist, std::vector<unsigned int> &pred) {}
+//};
+//
+//template<typename T>
+//using matrix = std::vector<std::vector<T>>;
+//
+//class PathsMultipleApp : public PathsApp<const Graph &, TypeGroup<matrix<double>, matrix<unsigned int>>> {
+//
+//    std::tuple<matrix<double>, matrix<unsigned int>> graphAlgorithm(const Graph &graph) {
+//        return {matrix<double>(), matrix<unsigned int>()};
+//    }
+//
+//    void printOutput(const matrix<double> &dist, matrix<unsigned int> &pred) {}
+//};
 
 
 #endif //GRAPH_APPS_PATHSAPP_H

@@ -105,10 +105,10 @@ private:
 
     template<typename... T>
     static auto ReturnType() {
-        if constexpr (((std::tuple_size_v<std::tuple<T...>>) > 1)) {
-            return std::tuple<T...>();
+        if constexpr (((std::tuple_size_v<std::tuple<std::decay_t<T>...>>) > 1)) {
+            return std::tuple<std::decay_t<T>...>();
         } else {
-            return std::get<0>(std::tuple<T...>());
+            return std::get<0>(std::tuple<std::decay_t<T>...>());
         }
     }
 
@@ -117,7 +117,14 @@ public:
     using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes...>())(InputTypes...)>;
 
     virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
-                       const std::string &outputFilePath, unsigned short version) = 0;
+                       const std::string &outputFilePath, unsigned short version) {
+
+        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
+        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
+//        auto graph = runTask("creating graph", [&]() { return createGraph(input); });
+//        auto r = runTask("running algorithm", alg.execute, graph);
+//        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
+    }
 
     virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
 
@@ -134,6 +141,8 @@ public:
 
         return map.at(algorithmName)[version];
     }
+
+    virtual auto createGraph(const std::string &text) -> decltype(ReturnType<InputTypes...>()) = 0;
 };
 
 
