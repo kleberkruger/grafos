@@ -22,12 +22,77 @@
  * SOFTWARE.
  */
 
+#include <iostream>
+#include <variant>
 #include "mstapp.h"
 #include "flowsapp.h"
 
+class MainApp {
+public:
+
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version) {
+
+        auto it = algorithmsMap.find(algorithmName);
+
+        if (it == algorithmsMap.end()) {
+            std::string errorMsg("Incorrect algorithm name\n");
+            errorMsg.append(getAlgorithmList());
+
+            throw std::invalid_argument(errorMsg);
+        }
+
+        std::visit([&](auto app) { app.start(algorithmName, inputFilePath, outputFilePath, version); }, it->second);
+    }
+
+    static std::string getAlgorithmList() {
+        std::string str("The list of [ algorithms | version ] is:\n");
+        for (auto &app : apps) {
+            std::visit([&](auto app) {
+                for (auto &item : app.getAlgorithmMap()) {
+                    str.append("- ").append("\"" + item.first + "\"")
+                            .append("\t| versions: 0..").append(std::to_string(item.second.size())).append("\n");
+                }
+            }, app);
+        }
+        return str;
+    }
+
+private:
+
+    static const inline std::vector<std::variant<MSTApp, FlowsApp>> apps{MSTApp(), FlowsApp()};
+
+    static const inline std::unordered_map<std::string, std::variant<MSTApp, FlowsApp>> algorithmsMap{
+            {"kruskal", apps[0]},
+            {"prim",    apps[0]},
+//            {"bellman-ford",   apps[1]},
+//            {"dijkstra",       apps[1]},
+//            {"floyd-warshall", apps[2]},
+//            {"johnson",        apps[2]},
+//            {"ford-fulkerson", apps[3]},
+//            {"edmonds-karp",   apps[3]},
+//            {"dinics",         apps[3]},
+    };
+};
+
 int main(int argc, char *argv[]) {
-    MSTApp().start(argv[1], argv[3], argv[4], 0);
-//    FlowsApp().start(argv[1], argv[3], argv[4], 0);
+
+    MainApp mainApp;
+
+    if (argc != 4 && argc != 5) {
+        std::string errorMsg = "Invalid argument format\n"
+                               "Run with the arguments: <algorithm>* <version> <filepath-in>* <filepath-out>*\n"
+                               "- Argument <version> is optional\n\n";
+
+        errorMsg.append(MainApp::getAlgorithmList());
+
+        throw std::invalid_argument(errorMsg);
+    }
+
+    short hasVersion = argc == 5 ? 1 : 0;
+    short version = hasVersion ? std::strtol(argv[2], nullptr, 10) : -1;
+
+    mainApp.start(argv[1], argv[2 + hasVersion], argv[3 + hasVersion], version);
 
     return EXIT_SUCCESS;
 }

@@ -32,15 +32,15 @@
 class MSTApp : public GraphApp<const Graph &, std::tuple<double, Graph>> {
 public:
 
-    void start(const std::string &algorithmName, const std::string &inputFilePath,
-               const std::string &outputFilePath, unsigned short version) override {
-
-        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
-        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
-        auto graph = runTask("creating graph", [&]() { return createGraph(input); });
-        auto r = runTask("running algorithm", alg.execute, graph);
-        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
-    }
+//    void start(const std::string &algorithmName, const std::string &inputFilePath,
+//               const std::string &outputFilePath, unsigned short version) override {
+//
+//        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
+//        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
+//        auto graph = runTask("creating graph", [&]() { return createGraph(input); });
+//        auto r = runTask("running algorithm", alg.execute, graph);
+//        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
+//    }
 
     const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<double, Graph>(const Graph &)>>>
     getAlgorithmMap() override {
@@ -51,14 +51,14 @@ public:
                      Algorithm<std::tuple<double, Graph>(const Graph &)>(mst)};
 
         return {{"kruskal", alg1},
-                {"prim",    alg1}};
+                {"prim",    alg2}};
     }
 
 private:
 
     Graph createGraph(const std::string &input) override { return Graph(); }
 
-    static void printOutput(const double total, Graph mst) {}
+    void printOutput(const double &total, const Graph &mst) override {}
 
     static std::tuple<double, Graph> mst(Graph graph) { return {0, Graph()}; }
 };

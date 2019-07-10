@@ -116,14 +116,45 @@ public:
 
     using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes...>())(InputTypes...)>;
 
+    static inline auto execute(const GraphAlgorithm &algorithm, const InputTypes &... input) {
+        std::cout << "estou na tua mãe" << std::endl;
+        show_types(input...);
+
+        return algorithm.execute(input...);
+    }
+
+    static inline auto execute(const GraphAlgorithm &algorithm, const std::tuple<InputTypes...> &input) {
+        std::cout << "estou na tupla" << std::endl;
+        show_types(input);
+
+        return std::apply(algorithm.execute, input);
+    }
+
+    static inline auto print(const GraphAlgorithm &algorithm, const InputTypes &... input) {
+        std::cout << "estou na tua mãe" << std::endl;
+        show_types(input...);
+
+        return algorithm.execute(input...);
+    }
+
+    static inline auto print(const GraphAlgorithm &algorithm, const std::tuple<InputTypes...> &input) {
+        std::cout << "estou na tupla" << std::endl;
+        show_types(input);
+
+        return std::apply(algorithm.execute, input);
+    }
+
     virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
                        const std::string &outputFilePath, unsigned short version) {
 
         auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
-        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
-//        auto graph = runTask("creating graph", [&]() { return createGraph(input); });
-//        auto r = runTask("running algorithm", alg.execute, graph);
-//        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
+        auto text = runTask("reading input file", &Application::readInputFile, inputFilePath);
+        auto input = runTask("creating graph", [&]() { return createGraph(text); });
+
+//        auto output = runTask("running algorithm", execute, alg, input);
+        auto output = execute(alg, input);
+
+//        runTask("print output", [&]() { printOutput(output); });
     }
 
     virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
@@ -139,10 +170,12 @@ public:
             throw std::invalid_argument("Incorrect version to " + algorithmName);
         }
 
-        return map.at(algorithmName)[version];
+        return (*it).second[version];
     }
 
     virtual auto createGraph(const std::string &text) -> decltype(ReturnType<InputTypes...>()) = 0;
+
+    virtual void printOutput(const OutputTypes &...) = 0;
 };
 
 
