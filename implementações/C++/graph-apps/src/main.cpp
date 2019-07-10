@@ -25,6 +25,7 @@
 #include <iostream>
 #include <variant>
 #include "mstapp.h"
+#include "pathsapp.h"
 #include "flowsapp.h"
 
 class MainApp {
@@ -60,18 +61,21 @@ public:
 
 private:
 
-    static const inline std::vector<std::variant<MSTApp, FlowsApp>> apps{MSTApp(), FlowsApp()};
+    static const inline std::vector<std::variant<MSTApp, PathsUniqueApp, PathsMultipleApp, FlowsApp>> apps{
+            MSTApp(), /*PathsUniqueApp(),*/ PathsMultipleApp(), FlowsApp()
+    };
 
-    static const inline std::unordered_map<std::string, std::variant<MSTApp, FlowsApp>> algorithmsMap{
-            {"kruskal", apps[0]},
-            {"prim",    apps[0]},
-//            {"bellman-ford",   apps[1]},
-//            {"dijkstra",       apps[1]},
-//            {"floyd-warshall", apps[2]},
-//            {"johnson",        apps[2]},
-//            {"ford-fulkerson", apps[3]},
-//            {"edmonds-karp",   apps[3]},
-//            {"dinics",         apps[3]},
+    static const inline std::unordered_map<std::string, std::variant<MSTApp, PathsUniqueApp, PathsMultipleApp, FlowsApp>>
+            algorithmsMap{
+            {"kruskal",        apps[0]},
+            {"prim",           apps[0]},
+            {"bellman-ford",   apps[1]},
+            {"dijkstra",       apps[1]},
+            {"floyd-warshall", apps[2]},
+            {"johnson",        apps[2]},
+            {"ford-fulkerson", apps[3]},
+            {"edmonds-karp",   apps[3]},
+            {"dinics",         apps[3]},
     };
 };
 
