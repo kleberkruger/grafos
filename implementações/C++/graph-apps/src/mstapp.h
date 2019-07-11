@@ -29,7 +29,11 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class MSTApp : public GraphApp<const Graph &, std::tuple<double, Graph>> {
+using MIn = const Graph &;
+using MOut = std::tuple<double, Graph>;
+using MAlg = Algorithm<MOut(const Graph &)>;
+
+class MSTApp : public GraphApp<MIn, MOut> {
 public:
 
 //    void start(const std::string &algorithmName, const std::string &inputFilePath,
@@ -42,16 +46,9 @@ public:
 //        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
 //    }
 
-    const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<double, Graph>(const Graph &)>>>
-    getAlgorithmMap() override {
-
-        auto alg1 = {Algorithm<std::tuple<double, Graph>(const Graph &)>(mst),
-                     Algorithm<std::tuple<double, Graph>(const Graph &)>(mst)};
-        auto alg2 = {Algorithm<std::tuple<double, Graph>(const Graph &)>(mst),
-                     Algorithm<std::tuple<double, Graph>(const Graph &)>(mst)};
-
-        return {{"kruskal", alg1},
-                {"prim",    alg2}};
+    const std::unordered_map<std::string, std::vector<MAlg>> getAlgorithmMap() override {
+        return {{"kruskal", {MAlg(mst), MAlg(mst)}},
+                {"prim",    {MAlg(mst), MAlg(mst)}}};
     }
 
 private:

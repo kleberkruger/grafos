@@ -29,12 +29,14 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class PathsUniqueApp : public GraphApp<TypeGroup<const Graph &, unsigned int>,
-        TypeGroup<std::vector<double>, std::vector<unsigned int>>> {
+using PUIn = std::tuple<const Graph &, unsigned int>;
+using PUOut = std::tuple<std::vector<double>, std::vector<unsigned int>>;
+using PUAlg = Algorithm<PUOut(const Graph &, unsigned int)>;
+
+class PathsUniqueApp : public GraphApp<PUIn, PUOut> {
 public:
 
-    static std::tuple<std::vector<double>, std::vector<unsigned int>>
-    graphAlgorithm(const Graph &graph, unsigned int source) {
+    static PUOut graphAlgorithm(const Graph &graph, unsigned int source) {
         return {std::vector<double>(), std::vector<unsigned int>()};
     }
 
@@ -42,20 +44,9 @@ public:
         return {Graph(), 0};
     }
 
-    virtual const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<std::vector<double>, std::vector<unsigned int>>(
-            const Graph &, unsigned int)>>> getAlgorithmMap() override {
-
-        auto alg1 = {Algorithm<std::tuple<std::vector<double>, std::vector<unsigned int>>(
-                const Graph &graph, unsigned int source)>(graphAlgorithm),
-                     Algorithm<std::tuple<std::vector<double>, std::vector<unsigned int>>(
-                             const Graph &graph, unsigned int source)>(graphAlgorithm)};
-        auto alg2 = {Algorithm<std::tuple<std::vector<double>, std::vector<unsigned int>>(
-                const Graph &graph, unsigned int source)>(graphAlgorithm),
-                     Algorithm<std::tuple<std::vector<double>, std::vector<unsigned int>>(
-                             const Graph &graph, unsigned int source)>(graphAlgorithm)};
-
-        return {{"kruskal", alg1},
-                {"prim",    alg2}};
+    virtual const std::unordered_map<std::string, std::vector<PUAlg>> getAlgorithmMap() override {
+        return {{"bellman-ford", {PUAlg(graphAlgorithm), PUAlg(graphAlgorithm)}},
+                {"dijkstra",     {PUAlg(graphAlgorithm), PUAlg(graphAlgorithm)}}};
     }
 
     virtual void printOutput(const std::vector<double> &dist, const std::vector<unsigned int> &pred) override {}
@@ -64,9 +55,14 @@ public:
 template<typename T>
 using matrix = std::vector<std::vector<T>>;
 
-class PathsMultipleApp : public GraphApp<const Graph &, TypeGroup<matrix<double>, matrix<unsigned int>>> {
+using PMIn = const Graph &;
+using PMOut = std::tuple<matrix<double>, matrix<unsigned int>>;
+using PMAlg = Algorithm<PMOut(const Graph &)>;
+
+class PathsMultipleApp : public GraphApp<PMIn, PMOut> {
 public:
-    static std::tuple<matrix<double>, matrix<unsigned int>> graphAlgorithm(const Graph &graph) {
+
+    static PMOut graphAlgorithm(const Graph &graph) {
         return {matrix<double>(), matrix<unsigned int>()};
     }
 
@@ -74,20 +70,9 @@ public:
         return Graph();
     }
 
-    const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<matrix<double>, matrix<unsigned int>>(
-            const Graph &)>>> getAlgorithmMap() override {
-
-        auto alg1 = {Algorithm<std::tuple<matrix<double>, matrix<unsigned int>>(
-                const Graph &graph)>(graphAlgorithm),
-                     Algorithm<std::tuple<matrix<double>, matrix<unsigned int>>(
-                             const Graph &graph)>(graphAlgorithm)};
-        auto alg2 = {Algorithm<std::tuple<matrix<double>, matrix<unsigned int>>(
-                const Graph &graph)>(graphAlgorithm),
-                     Algorithm<std::tuple<matrix<double>, matrix<unsigned int>>(
-                             const Graph &graph)>(graphAlgorithm)};
-
-        return {{"kruskal", alg1},
-                {"prim",    alg2}};
+    const std::unordered_map<std::string, std::vector<PMAlg>> getAlgorithmMap() override {
+        return {{"floyd-warshall", {PMAlg(graphAlgorithm), PMAlg(graphAlgorithm)}},
+                {"johnson",        {PMAlg(graphAlgorithm), PMAlg(graphAlgorithm)}}};
     }
 
     virtual void printOutput(const matrix<double> &dist, const matrix<unsigned int> &pred) override {}

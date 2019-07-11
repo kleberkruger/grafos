@@ -30,8 +30,11 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-class FlowsApp : public GraphApp<
-        std::tuple<const Graph &, unsigned int, unsigned int>, std::tuple<Graph, unsigned long>> {
+using FIn = std::tuple<const Graph &, unsigned int, unsigned int>;
+using FOut = std::tuple<Graph, unsigned long>;
+using FAlg = Algorithm<FOut(const Graph &, unsigned int, unsigned int)>;
+
+class FlowsApp : public GraphApp<FIn, FOut> {
 public:
 
 //    void start(const std::string &algorithmName, const std::string &inputFilePath,
@@ -48,25 +51,16 @@ public:
         return {Graph(), 0, 0};
     }
 
-    static std::tuple<Graph, unsigned long>
-    graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target) {
+    static FOut graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target) {
         return {Graph(), 0};
     }
 
     void printOutput(const Graph &graph, const unsigned long &total) override {}
 
-    const std::unordered_map<std::string, std::vector<Algorithm<std::tuple<Graph, unsigned long>(
-            const Graph &, unsigned int, unsigned int)>>> getAlgorithmMap() override {
-
-        auto alg1 = {
-                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm),
-                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm)};
-        auto alg2 = {
-                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm),
-                Algorithm<std::tuple<Graph, unsigned long>(const Graph &, unsigned int, unsigned int)>(graphAlgorithm)};
-
-        return {{"kruskal", alg1},
-                {"prim", alg2}};
+    const std::unordered_map<std::string, std::vector<FAlg>> getAlgorithmMap() override {
+        return {{"ford-fulkerson", {FAlg(graphAlgorithm), FAlg(graphAlgorithm)}},
+                {"edmonds-karp",   {FAlg(graphAlgorithm), FAlg(graphAlgorithm)}},
+                {"dinics",         {FAlg(graphAlgorithm), FAlg(graphAlgorithm)}}};
     }
 };
 
