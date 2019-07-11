@@ -31,12 +31,14 @@
 class MainApp {
 public:
 
+    using variant_apps = std::variant<MSTApp, PathsUniqueApp, PathsMultipleApp, FlowsApp>;
+
     void start(const std::string &algorithmName, const std::string &inputFilePath,
                const std::string &outputFilePath, unsigned short version) {
 
-        auto it = algorithmsMap.find(algorithmName);
+        auto it = getAlgorithmsMap().find(algorithmName);
 
-        if (it == algorithmsMap.end()) {
+        if (it == getAlgorithmsMap().end()) {
             std::string errorMsg("Incorrect algorithm name\n");
             errorMsg.append(getAlgorithmList());
 
@@ -48,7 +50,7 @@ public:
 
     static std::string getAlgorithmList() {
         std::string str("The list of [ algorithms | version ] is:\n");
-        for (auto &app : apps) {
+        for (auto &app : getApps()) {
             std::visit([&](auto app) {
                 for (auto &item : app.getAlgorithmMap()) {
                     str.append("- ").append("\"" + item.first + "\"")
@@ -61,22 +63,40 @@ public:
 
 private:
 
-    static const inline std::vector<std::variant<MSTApp, PathsUniqueApp, PathsMultipleApp, FlowsApp>> apps{
-            MSTApp(), /*PathsUniqueApp(),*/ PathsMultipleApp(), FlowsApp()
+//    static const inline std::vector<variant_apps> apps{MSTApp(), PathsUniqueApp(), PathsMultipleApp(), FlowsApp()};
+
+    static const inline std::vector<variant_apps> &getApps() {
+        static const std::vector<variant_apps> apps{MSTApp(), PathsUniqueApp(), PathsMultipleApp(), FlowsApp()};
+        return apps;
     };
 
-    static const inline std::unordered_map<std::string, std::variant<MSTApp, PathsUniqueApp, PathsMultipleApp, FlowsApp>>
-            algorithmsMap{
-            {"kruskal",        apps[0]},
-            {"prim",           apps[0]},
-            {"bellman-ford",   apps[1]},
-            {"dijkstra",       apps[1]},
-            {"floyd-warshall", apps[2]},
-            {"johnson",        apps[2]},
-            {"ford-fulkerson", apps[3]},
-            {"edmonds-karp",   apps[3]},
-            {"dinics",         apps[3]},
-    };
+//    static const inline std::unordered_map<std::string, variant_apps> algorithmsMap{
+//            {"kruskal",        apps[0]},
+//            {"prim",           apps[0]},
+//            {"bellman-ford",   apps[1]},
+//            {"dijkstra",       apps[1]},
+//            {"floyd-warshall", apps[2]},
+//            {"johnson",        apps[2]},
+//            {"ford-fulkerson", apps[3]},
+//            {"edmonds-karp",   apps[3]},
+//            {"dinics",         apps[3]},
+//    };
+
+    static const inline std::unordered_map<std::string, variant_apps> &getAlgorithmsMap() {
+        auto &apps = getApps();
+        static const std::unordered_map<std::string, variant_apps> algorithmsMap{
+                {"kruskal",        apps[0]},
+                {"prim",           apps[0]},
+                {"bellman-ford",   apps[1]},
+                {"dijkstra",       apps[1]},
+                {"floyd-warshall", apps[2]},
+                {"johnson",        apps[2]},
+                {"ford-fulkerson", apps[3]},
+                {"edmonds-karp",   apps[3]},
+                {"dinics",         apps[3]},
+        };
+        return algorithmsMap;
+    }
 };
 
 int main(int argc, char *argv[]) {

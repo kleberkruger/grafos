@@ -124,7 +124,7 @@ private:
 
     static void finalizeTask(Task &task) {
         task.finish = std::chrono::high_resolution_clock::now();
-        printf(" Finishing task : %s (%lld ms)\n"
+        printf(" Finishing task: %s (%lld ms)\n"
                "================================================================================\n",
                task.description.c_str(),
                std::chrono::duration_cast<std::chrono::milliseconds>(task.finish - task.start).count());

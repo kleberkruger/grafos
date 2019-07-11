@@ -12,10 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac9a63c0-e4a7-4005-98e2-f7c854023c9b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flowsapp.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/flowsapp.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mstapp.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mstapp.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pathsapp.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pathsapp.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/application.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+            <state relative-caret-position="640">
+              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
               <folding>
                 <element signature="e#1138#1157#0" expanded="true" />
               </folding>
@@ -67,12 +65,12 @@
         <option value="$PROJECT_DIR$/dataset/t1/in_cormen.txt" />
         <option value="$PROJECT_DIR$/dataset/t3/in_cormen.txt" />
         <option value="$PROJECT_DIR$/src/core/app.h" />
-        <option value="$PROJECT_DIR$/src/core/application.h" />
         <option value="$PROJECT_DIR$/src/core/graphapp.h" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/mstapp.h" />
         <option value="$PROJECT_DIR$/src/flowsapp.h" />
         <option value="$PROJECT_DIR$/src/pathsapp.h" />
+        <option value="$PROJECT_DIR$/src/core/application.h" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
       </list>
     </option>
   </component>
@@ -107,6 +105,12 @@
               <item name="graph_apps" type="b2602c69:ProjectViewProjectNode" />
               <item name="graph-apps" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="graph_apps" type="b2602c69:ProjectViewProjectNode" />
+              <item name="graph-apps" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -179,12 +183,12 @@
       <workItem from="1562651362946" duration="1799000" />
       <workItem from="1562666187019" duration="238000" />
       <workItem from="1562670454210" duration="33627000" />
-      <workItem from="1562824238662" duration="4697000" />
+      <workItem from="1562824238662" duration="6568000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98534000" />
+    <option name="totallyTimeSpent" value="100405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="984" extended-state="6" />
@@ -420,19 +424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/application.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="60" column="4" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
-          <folding>
-            <element signature="e#1206#1223#0" expanded="true" />
-            <element signature="e#1739#1769#0" expanded="true" />
-            <element signature="e#1849#1879#0" expanded="true" />
-            <element signature="e#2208#2238#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/graphapp.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
@@ -482,10 +473,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/application.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+          <folding>
+            <element signature="e#1206#1223#0" expanded="true" />
+            <element signature="e#1739#1769#0" expanded="true" />
+            <element signature="e#1849#1879#0" expanded="true" />
+            <element signature="e#2208#2238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
+        <state relative-caret-position="640">
+          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
           <folding>
             <element signature="e#1138#1157#0" expanded="true" />
           </folding>
