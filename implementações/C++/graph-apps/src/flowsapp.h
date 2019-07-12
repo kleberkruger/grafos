@@ -48,7 +48,22 @@ public:
 //    }
 
     std::tuple<Graph, unsigned int, unsigned int> createGraph(const std::string &input) override {
-        return {Graph(), 0, 0};
+        char *token;
+        unsigned int n = strtol(input.c_str(), &token, 10);
+        unsigned int m = strtol(token, &token, 10);
+        unsigned int s = strtol(token, &token, 10);
+        unsigned int t = strtol(token, &token, 10);
+
+        Graph graph(n, m);
+
+        for (int i = 0; i < m; i++) {
+            unsigned int v1 = strtol(token, &token, 10);
+            unsigned int v2 = strtol(token, &token, 10);
+            unsigned int c = strtol(token, &token, 10);
+            graph.insertEdge(v1, v2, c);
+        }
+
+        return {graph, s, t};
     }
 
     static FOut graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target) {

@@ -33,7 +33,7 @@ public:
 
     using variant_apps = std::variant<MSTApp, PathsUniqueApp, PathsMultipleApp, FlowsApp>;
 
-    void start(const std::string &algorithmName, const std::string &inputFilePath,
+    static void start(const std::string &algorithmName, const std::string &inputFilePath,
                const std::string &outputFilePath, unsigned short version) {
 
         auto it = getAlgorithmsMap().find(algorithmName);
@@ -63,24 +63,10 @@ public:
 
 private:
 
-//    static const inline std::vector<variant_apps> apps{MSTApp(), PathsUniqueApp(), PathsMultipleApp(), FlowsApp()};
-
     static const inline std::vector<variant_apps> &getApps() {
         static const std::vector<variant_apps> apps{MSTApp(), PathsUniqueApp(), PathsMultipleApp(), FlowsApp()};
         return apps;
     };
-
-//    static const inline std::unordered_map<std::string, variant_apps> algorithmsMap{
-//            {"kruskal",        apps[0]},
-//            {"prim",           apps[0]},
-//            {"bellman-ford",   apps[1]},
-//            {"dijkstra",       apps[1]},
-//            {"floyd-warshall", apps[2]},
-//            {"johnson",        apps[2]},
-//            {"ford-fulkerson", apps[3]},
-//            {"edmonds-karp",   apps[3]},
-//            {"dinics",         apps[3]},
-//    };
 
     static const inline std::unordered_map<std::string, variant_apps> &getAlgorithmsMap() {
         auto &apps = getApps();
@@ -99,10 +85,7 @@ private:
     }
 };
 
-int main(int argc, char *argv[]) {
-
-    MainApp mainApp;
-
+void checkArgs(int argc, char *argv[]) {
     if (argc != 4 && argc != 5) {
         std::string errorMsg = "Invalid argument format\n"
                                "Run with the arguments: <algorithm>* <version> <filepath-in>* <filepath-out>*\n"
@@ -112,11 +95,15 @@ int main(int argc, char *argv[]) {
 
         throw std::invalid_argument(errorMsg);
     }
+}
+
+int main(int argc, char *argv[]) {
+    checkArgs(argc, argv);
 
     short hasVersion = argc == 5 ? 1 : 0;
     short version = hasVersion ? std::strtol(argv[2], nullptr, 10) : -1;
 
-    mainApp.start(argv[1], argv[2 + hasVersion], argv[3 + hasVersion], version);
+    MainApp::start(argv[1], argv[2 + hasVersion], argv[3 + hasVersion], version);
 
     return EXIT_SUCCESS;
 }

@@ -36,3 +36,12 @@ O mapeamento dos algoritmos (map<algoritmo, versão>) e o despacho sequencial da
 * Como o usuário fica ciente do que está ocorrendo?
 1 - A cada tarefa iniciada, é exibida sua descrição. Ao término da tarefa, mostra-se o tempo gasto;
 2 - Ao concluir todas as tarefas, é exibido o tempo total da execução de toda a aplicação.
+
+Classe Graph:
+
+Há arestas com as seguintes informações: 
+- (vértice_v1, vértice_v2, peso);
+- (vértice_v1, vértice_v2, capacidade);
+- (vértice_v1, vértice_v2, capacidade, fluxo);
+- (vértice_v1, vértice_v2, capacidade_residual);
+``

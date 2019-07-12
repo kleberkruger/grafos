@@ -53,7 +53,22 @@ public:
 
 private:
 
-    Graph createGraph(const std::string &input) override { return Graph(); }
+    Graph createGraph(const std::string &input) override {
+        char *token;
+        unsigned int n = strtol(input.c_str(), &token, 10);
+        unsigned int m = strtol(token, &token, 10);
+
+        Graph graph(n, m);
+
+        for (int i = 0; i < m; i++) {
+            unsigned int v1 = strtol(token, &token, 10);
+            unsigned int v2 = strtol(token, &token, 10);
+            double w = strtod(token, &token);
+            graph.insertEdge(v1, v2, w);
+        }
+
+        return graph;
+    }
 
     void printOutput(const double &total, const Graph &mst) override {}
 

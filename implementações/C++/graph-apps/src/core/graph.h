@@ -26,8 +26,34 @@
 #define GRAPH_APPS_GRAPH_H
 
 
-class Graph {
+#include <vector>
 
+struct Vertex {
+
+};
+
+struct Edge {
+
+};
+
+class Graph {
+public:
+
+    explicit Graph(unsigned int n = 0, unsigned long m = 0) : vertices(n) {
+        edges.reserve(m);
+    }
+
+    void insertEdge(const Edge &edge) {
+        edges.push_back(edge);
+    }
+
+    void insertEdge(unsigned int v1, unsigned int v2, double w) {
+    }
+
+private:
+
+    std::vector<Vertex> vertices;
+    std::vector<Edge> edges;
 };
 
 

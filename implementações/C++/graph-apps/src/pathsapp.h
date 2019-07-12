@@ -41,7 +41,21 @@ public:
     }
 
     virtual std::tuple<Graph, unsigned int> createGraph(const std::string &input) override {
-        return {Graph(), 0};
+        char *token;
+        unsigned int n = strtol(input.c_str(), &token, 10);
+        unsigned int m = strtol(token, &token, 10);
+        unsigned int s = strtol(token, &token, 10);
+
+        Graph graph(n, m);
+
+        for (int i = 0; i < m; i++) {
+            unsigned int v1 = strtol(token, &token, 10);
+            unsigned int v2 = strtol(token, &token, 10);
+            double w = strtod(token, &token);
+            graph.insertEdge(v1, v2, w);
+        }
+
+        return {graph, s};
     }
 
     virtual const std::unordered_map<std::string, std::vector<PUAlg>> getAlgorithmMap() override {
@@ -67,7 +81,21 @@ public:
     }
 
     virtual Graph createGraph(const std::string &input) override {
-        return Graph();
+        char *token;
+        unsigned int n = strtol(input.c_str(), &token, 10);
+        unsigned int m = strtol(token, &token, 10);
+        unsigned int s = strtol(token, &token, 10);
+
+        Graph graph(n, m);
+
+        for (int i = 0; i < m; i++) {
+            unsigned int v1 = strtol(token, &token, 10);
+            unsigned int v2 = strtol(token, &token, 10);
+            double w = strtod(token, &token);
+            graph.insertEdge(v1, v2, w);
+        }
+
+        return graph;
     }
 
     const std::unordered_map<std::string, std::vector<PMAlg>> getAlgorithmMap() override {
