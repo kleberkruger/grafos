@@ -34,7 +34,7 @@ public:
     using variant_apps = std::variant<MSTApp, PathsUniqueApp, PathsMultipleApp, FlowsApp>;
 
     static void start(const std::string &algorithmName, const std::string &inputFilePath,
-               const std::string &outputFilePath, unsigned short version) {
+                      const std::string &outputFilePath, unsigned short version) {
 
         auto it = getAlgorithmsMap().find(algorithmName);
 
@@ -45,7 +45,9 @@ public:
             throw std::invalid_argument(errorMsg);
         }
 
-        std::visit([&](auto app) { app.start(algorithmName, inputFilePath, outputFilePath, version); }, it->second);
+        std::visit([&](auto app) {
+            app.start(algorithmName, inputFilePath, outputFilePath, version);
+        }, it->second);
     }
 
     static std::string getAlgorithmList() {
@@ -97,6 +99,29 @@ void checkArgs(int argc, char *argv[]) {
     }
 }
 
+std::tuple<std::string, std::string, std::string, short> extractArgs(int argc, char *argv[]) {
+    short hasVersion = argc - 4;
+    short version = -1;
+
+    if (hasVersion == 1) {
+        char *error;
+        version = std::strtol(argv[2], &error, 10);
+        if (error != nullptr) {
+            throw std::invalid_argument(error);
+        }
+
+    } else if (hasVersion != 0) {
+        std::string errorMsg = "Invalid argument format\n"
+                               "Run with the arguments: <algorithm>* <version> <filepath-in>* <filepath-out>*\n"
+                               "- Argument <version> is optional\n\n";
+
+        errorMsg.append(MainApp::getAlgorithmList());
+        throw std::invalid_argument(errorMsg);
+    }
+
+    return {argv[1], argv[2 + hasVersion], argv[3 + hasVersion], version};
+}
+
 int main(int argc, char *argv[]) {
     checkArgs(argc, argv);
 
@@ -104,6 +129,9 @@ int main(int argc, char *argv[]) {
     short version = hasVersion ? std::strtol(argv[2], nullptr, 10) : -1;
 
     MainApp::start(argv[1], argv[2 + hasVersion], argv[3 + hasVersion], version);
+
+//    auto[algorithmName, inputFilePath, outputFilePath, version] = extractArgs(argc, argv);
+//    MainApp::start(algorithmName, inputFilePath, outputFilePath, version);
 
     return EXIT_SUCCESS;
 }
