@@ -34,6 +34,9 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 
+/**
+ * Representa uma tarefa da aplicação.
+ */
 struct Task {
 
     explicit Task(std::string description) : description(std::move(description)),
@@ -44,12 +47,25 @@ struct Task {
     std::chrono::high_resolution_clock::time_point finish;
 };
 
+/**
+ * Application é uma classe base com métodos para o gerenciamento de tarefas de uma aplicação.
+ */
 class Application {
 protected:
 
     template<typename F, typename... Args>
     using ReturnType = typename std::result_of<F(Args...)>::type;
 
+    /**
+     * Executa uma tarefa.
+     *
+     * @tparam F
+     * @tparam Args
+     * @param description
+     * @param func
+     * @param args
+     * @return
+     */
     template<typename F, typename... Args>
     typename std::enable_if_t<std::is_same_v<ReturnType<F, Args...>, void>>
     runTask(const std::string &description, F &&func, Args &&... args) {
@@ -58,6 +74,16 @@ protected:
         finalizeTask(task);
     }
 
+    /**
+     * Executa uma tarefa.
+     *
+     * @tparam F
+     * @tparam Args
+     * @param description
+     * @param func
+     * @param args
+     * @return
+     */
     template<typename F, typename... Args>
     typename std::enable_if_t<!std::is_same_v<ReturnType<F, Args...>, void>, ReturnType<F, Args...>>
     runTask(const std::string &description, F &&func, Args &&... args) {
@@ -79,6 +105,12 @@ protected:
 //        return runTask(std::is_void<ReturnType<F, Args...>>{}, name, func, args...);
 //    }
 
+    /**
+     * Lê um arquivo de entrada.
+     *
+     * @param filePath
+     * @return
+     */
     static std::string readInputFile(const std::string &filePath) {
         char buffer[BUFFER_SIZE];
         int fd, ret;
@@ -100,8 +132,20 @@ protected:
         return text;
     }
 
-    static void printOutputFile(const std::string &filePath) {
+    /**
+     * Escreve em um arquivo de saída.
+     *
+     * @param filePath
+     * @param text
+     */
+    static void printOutputFile(const std::string &filePath, const std::string &text) {
+        int fd;
 
+        if ((fd = open(filePath.c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IROTH)) == -1) {
+            throw std::invalid_argument("Incorrect output file path: \"" + filePath + "\"");
+        }
+
+        write(fd, text.c_str(), text.size());
     }
 
 private:
@@ -109,6 +153,12 @@ private:
     static constexpr int BUFFER_SIZE = 65536;
     std::vector<Task> tasks;
 
+    /**
+     * Inicializa uma tarefa.
+     *
+     * @param description
+     * @return
+     */
     Task initializeTask(const std::string &description) {
         printf("\n"
                "================================================================================\n"
@@ -122,6 +172,11 @@ private:
         return task;
     }
 
+    /**
+     * Finaliza uma tarefa.
+     *
+     * @param task
+     */
     static void finalizeTask(Task &task) {
         task.finish = std::chrono::high_resolution_clock::now();
         printf(" Finishing task: %s (%lld ms)\n"

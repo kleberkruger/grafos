@@ -150,60 +150,6 @@ src/core/graph.cpp.s:
 	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/core/graph.cpp.s
 .PHONY : src/core/graph.cpp.s
 
-src/core/graphapp.o: src/core/graphapp.cpp.o
-
-.PHONY : src/core/graphapp.o
-
-# target to build an object file
-src/core/graphapp.cpp.o:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o
-.PHONY : src/core/graphapp.cpp.o
-
-src/core/graphapp.i: src/core/graphapp.cpp.i
-
-.PHONY : src/core/graphapp.i
-
-# target to preprocess a source file
-src/core/graphapp.cpp.i:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.i
-.PHONY : src/core/graphapp.cpp.i
-
-src/core/graphapp.s: src/core/graphapp.cpp.s
-
-.PHONY : src/core/graphapp.s
-
-# target to generate assembly for a file
-src/core/graphapp.cpp.s:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.s
-.PHONY : src/core/graphapp.cpp.s
-
-src/flowsapp.o: src/flowsapp.cpp.o
-
-.PHONY : src/flowsapp.o
-
-# target to build an object file
-src/flowsapp.cpp.o:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o
-.PHONY : src/flowsapp.cpp.o
-
-src/flowsapp.i: src/flowsapp.cpp.i
-
-.PHONY : src/flowsapp.i
-
-# target to preprocess a source file
-src/flowsapp.cpp.i:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/flowsapp.cpp.i
-.PHONY : src/flowsapp.cpp.i
-
-src/flowsapp.s: src/flowsapp.cpp.s
-
-.PHONY : src/flowsapp.s
-
-# target to generate assembly for a file
-src/flowsapp.cpp.s:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/flowsapp.cpp.s
-.PHONY : src/flowsapp.cpp.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -231,60 +177,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/mstapp.o: src/mstapp.cpp.o
-
-.PHONY : src/mstapp.o
-
-# target to build an object file
-src/mstapp.cpp.o:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/mstapp.cpp.o
-.PHONY : src/mstapp.cpp.o
-
-src/mstapp.i: src/mstapp.cpp.i
-
-.PHONY : src/mstapp.i
-
-# target to preprocess a source file
-src/mstapp.cpp.i:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/mstapp.cpp.i
-.PHONY : src/mstapp.cpp.i
-
-src/mstapp.s: src/mstapp.cpp.s
-
-.PHONY : src/mstapp.s
-
-# target to generate assembly for a file
-src/mstapp.cpp.s:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/mstapp.cpp.s
-.PHONY : src/mstapp.cpp.s
-
-src/pathsapp.o: src/pathsapp.cpp.o
-
-.PHONY : src/pathsapp.o
-
-# target to build an object file
-src/pathsapp.cpp.o:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/pathsapp.cpp.o
-.PHONY : src/pathsapp.cpp.o
-
-src/pathsapp.i: src/pathsapp.cpp.i
-
-.PHONY : src/pathsapp.i
-
-# target to preprocess a source file
-src/pathsapp.cpp.i:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/pathsapp.cpp.i
-.PHONY : src/pathsapp.cpp.i
-
-src/pathsapp.s: src/pathsapp.cpp.s
-
-.PHONY : src/pathsapp.s
-
-# target to generate assembly for a file
-src/pathsapp.cpp.s:
-	$(MAKE) -f CMakeFiles/graph_apps.dir/build.make CMakeFiles/graph_apps.dir/src/pathsapp.cpp.s
-.PHONY : src/pathsapp.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -297,21 +189,9 @@ help:
 	@echo "... src/core/graph.o"
 	@echo "... src/core/graph.i"
 	@echo "... src/core/graph.s"
-	@echo "... src/core/graphapp.o"
-	@echo "... src/core/graphapp.i"
-	@echo "... src/core/graphapp.s"
-	@echo "... src/flowsapp.o"
-	@echo "... src/flowsapp.i"
-	@echo "... src/flowsapp.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/mstapp.o"
-	@echo "... src/mstapp.i"
-	@echo "... src/mstapp.s"
-	@echo "... src/pathsapp.o"
-	@echo "... src/pathsapp.i"
-	@echo "... src/pathsapp.s"
 .PHONY : help
 
 

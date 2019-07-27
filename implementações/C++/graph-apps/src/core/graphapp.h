@@ -46,120 +46,18 @@ struct Algorithm {
                                                                        name(std::move(name)) {}
 };
 
-template<typename...Args>
-void show_types(Args...) {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-template<typename... Types>
-struct TypeGroup;
-
-template<typename...>
-class GraphApp;
-
-/**
- * T1, T2
- *
- * @tparam InputTypes
- * @tparam OutputTypes
- */
-template<typename InputTypes, typename OutputTypes>
-class GraphApp<InputTypes, OutputTypes>
-        : public GraphApp<TypeGroup<InputTypes>, TypeGroup<OutputTypes>> {
-};
-
-/**
- * T1, std::tuple<T2>
- *
- * @tparam TypeGroupT
- * @tparam InputTypes
- * @tparam OutputTypes
- */
-template<template<typename...> class TypeGroupT, typename InputTypes, typename...OutputTypes>
-class GraphApp<InputTypes, TypeGroupT<OutputTypes...>>
-        : public GraphApp<TypeGroup<InputTypes>, TypeGroup<OutputTypes...>> {
-};
-
-/**
- * std::tuple<T1>, T2
- *
- * @tparam TypeGroupT
- * @tparam InputTypes
- * @tparam OutputTypes
- */
-template<template<typename...> class TypeGroupT, typename...InputTypes, typename OutputTypes>
-class GraphApp<TypeGroupT<InputTypes...>, OutputTypes>
-        : public GraphApp<TypeGroup<InputTypes...>, TypeGroup<OutputTypes>> {
-};
-
-/**
- * std::tuple<T1>, std::tuple<T2>
- *
- * @tparam TypeGroupT
- * @tparam InputTypes
- * @tparam OutputTypes
- */
-template<template<typename...> class TypeGroupT, typename...InputTypes, typename...OutputTypes>
-class GraphApp<TypeGroupT<InputTypes...>, TypeGroupT<OutputTypes...>> : public Application {
-private:
-
-    template<typename... T>
-    static auto ReturnType() {
-        if constexpr (((std::tuple_size_v<std::tuple<std::decay_t<T>...>>) > 1)) {
-            return std::tuple<std::decay_t<T>...>();
-        } else {
-            return std::get<0>(std::tuple<std::decay_t<T>...>());
-        }
-    }
-
+template<class Alg>
+class GraphApp : public Application {
 public:
 
-    using GraphAlgorithm = Algorithm<decltype(ReturnType<OutputTypes...>())(InputTypes...)>;
-
-    static inline auto execute(const GraphAlgorithm &algorithm, const InputTypes &... input) {
-        std::cout << "estou na tua mãe" << std::endl;
-        show_types(input...);
-
-        return algorithm.execute(input...);
-    }
-
-    static inline auto execute(const GraphAlgorithm &algorithm, const std::tuple<InputTypes...> &input) {
-        std::cout << "estou na tupla" << std::endl;
-        show_types(input);
-
-        return std::apply(algorithm.execute, input);
-    }
-
-    static inline auto print(const GraphAlgorithm &algorithm, const InputTypes &... input) {
-        std::cout << "estou na tua mãe" << std::endl;
-        show_types(input...);
-
-        return algorithm.execute(input...);
-    }
-
-    static inline auto print(const GraphAlgorithm &algorithm, const std::tuple<InputTypes...> &input) {
-        std::cout << "estou na tupla" << std::endl;
-        show_types(input);
-
-        return std::apply(algorithm.execute, input);
-    }
+    virtual const std::unordered_map<std::string, std::vector<Alg>> getAlgorithmMap() = 0;
 
     virtual void start(const std::string &algorithmName, const std::string &inputFilePath,
-                       const std::string &outputFilePath, unsigned short version) {
+                       const std::string &outputFilePath, unsigned short version) = 0;
 
-        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
-        auto text = runTask("reading input file", &Application::readInputFile, inputFilePath);
-        auto input = runTask("creating graph", [&]() { return createGraph(text); });
+protected:
 
-//        auto output = runTask("running algorithm", execute, alg, input);
-        auto output = execute(alg, input);
-
-//        runTask("print output", [&]() { printOutput(output); });
-    }
-
-    virtual const std::unordered_map<std::string, std::vector<GraphAlgorithm>> getAlgorithmMap() = 0;
-
-    const GraphAlgorithm selectAlgorithm(const std::string &algorithmName, unsigned short version) {
+    const Alg selectAlgorithm(const std::string &algorithmName, unsigned short version) {
 
         auto &map = getAlgorithmMap();
         auto it = map.find(algorithmName);
@@ -172,10 +70,6 @@ public:
 
         return it->second[version];
     }
-
-    virtual auto createGraph(const std::string &text) -> decltype(ReturnType<InputTypes...>()) = 0;
-
-    virtual void printOutput(const OutputTypes &...) = 0;
 };
 
 

@@ -70,61 +70,9 @@ CMakeFiles/graph_apps.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graph_apps.dir/src/main.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/main.cpp" -o CMakeFiles/graph_apps.dir/src/main.cpp.s
 
-CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o: CMakeFiles/graph_apps.dir/flags.make
-CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o: ../src/core/graphapp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o -c "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.cpp"
-
-CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.cpp" > CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.i
-
-CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graphapp.cpp" -o CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.s
-
-CMakeFiles/graph_apps.dir/src/mstapp.cpp.o: CMakeFiles/graph_apps.dir/flags.make
-CMakeFiles/graph_apps.dir/src/mstapp.cpp.o: ../src/mstapp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/graph_apps.dir/src/mstapp.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graph_apps.dir/src/mstapp.cpp.o -c "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/mstapp.cpp"
-
-CMakeFiles/graph_apps.dir/src/mstapp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graph_apps.dir/src/mstapp.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/mstapp.cpp" > CMakeFiles/graph_apps.dir/src/mstapp.cpp.i
-
-CMakeFiles/graph_apps.dir/src/mstapp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graph_apps.dir/src/mstapp.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/mstapp.cpp" -o CMakeFiles/graph_apps.dir/src/mstapp.cpp.s
-
-CMakeFiles/graph_apps.dir/src/pathsapp.cpp.o: CMakeFiles/graph_apps.dir/flags.make
-CMakeFiles/graph_apps.dir/src/pathsapp.cpp.o: ../src/pathsapp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/graph_apps.dir/src/pathsapp.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graph_apps.dir/src/pathsapp.cpp.o -c "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/pathsapp.cpp"
-
-CMakeFiles/graph_apps.dir/src/pathsapp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graph_apps.dir/src/pathsapp.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/pathsapp.cpp" > CMakeFiles/graph_apps.dir/src/pathsapp.cpp.i
-
-CMakeFiles/graph_apps.dir/src/pathsapp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graph_apps.dir/src/pathsapp.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/pathsapp.cpp" -o CMakeFiles/graph_apps.dir/src/pathsapp.cpp.s
-
-CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o: CMakeFiles/graph_apps.dir/flags.make
-CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o: ../src/flowsapp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o -c "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/flowsapp.cpp"
-
-CMakeFiles/graph_apps.dir/src/flowsapp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graph_apps.dir/src/flowsapp.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/flowsapp.cpp" > CMakeFiles/graph_apps.dir/src/flowsapp.cpp.i
-
-CMakeFiles/graph_apps.dir/src/flowsapp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graph_apps.dir/src/flowsapp.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/flowsapp.cpp" -o CMakeFiles/graph_apps.dir/src/flowsapp.cpp.s
-
 CMakeFiles/graph_apps.dir/src/core/graph.cpp.o: CMakeFiles/graph_apps.dir/flags.make
 CMakeFiles/graph_apps.dir/src/core/graph.cpp.o: ../src/core/graph.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/graph_apps.dir/src/core/graph.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/graph_apps.dir/src/core/graph.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graph_apps.dir/src/core/graph.cpp.o -c "/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/src/core/graph.cpp"
 
 CMakeFiles/graph_apps.dir/src/core/graph.cpp.i: cmake_force
@@ -138,24 +86,16 @@ CMakeFiles/graph_apps.dir/src/core/graph.cpp.s: cmake_force
 # Object files for target graph_apps
 graph_apps_OBJECTS = \
 "CMakeFiles/graph_apps.dir/src/main.cpp.o" \
-"CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o" \
-"CMakeFiles/graph_apps.dir/src/mstapp.cpp.o" \
-"CMakeFiles/graph_apps.dir/src/pathsapp.cpp.o" \
-"CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o" \
 "CMakeFiles/graph_apps.dir/src/core/graph.cpp.o"
 
 # External object files for target graph_apps
 graph_apps_EXTERNAL_OBJECTS =
 
 graph_apps: CMakeFiles/graph_apps.dir/src/main.cpp.o
-graph_apps: CMakeFiles/graph_apps.dir/src/core/graphapp.cpp.o
-graph_apps: CMakeFiles/graph_apps.dir/src/mstapp.cpp.o
-graph_apps: CMakeFiles/graph_apps.dir/src/pathsapp.cpp.o
-graph_apps: CMakeFiles/graph_apps.dir/src/flowsapp.cpp.o
 graph_apps: CMakeFiles/graph_apps.dir/src/core/graph.cpp.o
 graph_apps: CMakeFiles/graph_apps.dir/build.make
 graph_apps: CMakeFiles/graph_apps.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable graph_apps"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Volumes/KrugerDrive/kleberkruger/Clouds/Box Sync/SourceCode/Git/GitHub/Disciplinas/Algoritmos em Grafos/grafos/implementações/C++/graph-apps/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable graph_apps"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/graph_apps.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

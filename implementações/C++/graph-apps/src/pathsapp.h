@@ -29,18 +29,24 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-using PUIn = std::tuple<const Graph &, unsigned int>;
-using PUOut = std::tuple<std::vector<double>, std::vector<unsigned int>>;
-using PUAlg = Algorithm<PUOut(const Graph &, unsigned int)>;
+using PathUAlg = Algorithm<std::tuple<std::vector<double>, std::vector<unsigned int>>(const Graph &, unsigned int)>;
 
-class PathsUniqueApp : public GraphApp<PUIn, PUOut> {
+class PathsUniqueApp : public GraphApp<PathUAlg> {
 public:
 
-    static PUOut graphAlgorithm(const Graph &graph, unsigned int source) {
-        return {std::vector<double>(), std::vector<unsigned int>()};
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version) override {
+
     }
 
-    virtual std::tuple<Graph, unsigned int> createGraph(const std::string &input) override {
+    virtual const std::unordered_map<std::string, std::vector<PathUAlg>> getAlgorithmMap() override {
+        return {{"bellman-ford", {PathUAlg(graphAlgorithm), PathUAlg(graphAlgorithm)}},
+                {"dijkstra",     {PathUAlg(graphAlgorithm), PathUAlg(graphAlgorithm)}}};
+    }
+
+private:
+
+    static std::tuple<Graph, unsigned int> createGraph(const std::string &input) {
         char *token;
         unsigned int n = strtol(input.c_str(), &token, 10);
         unsigned int m = strtol(token, &token, 10);
@@ -58,29 +64,36 @@ public:
         return {graph, s};
     }
 
-    virtual const std::unordered_map<std::string, std::vector<PUAlg>> getAlgorithmMap() override {
-        return {{"bellman-ford", {PUAlg(graphAlgorithm), PUAlg(graphAlgorithm)}},
-                {"dijkstra",     {PUAlg(graphAlgorithm), PUAlg(graphAlgorithm)}}};
-    }
+    static void printOutput(const std::vector<double> &dist, const std::vector<unsigned int> &pred) {}
 
-    virtual void printOutput(const std::vector<double> &dist, const std::vector<unsigned int> &pred) override {}
+    static std::tuple<std::vector<double>, std::vector<unsigned int>>
+    graphAlgorithm(const Graph &graph, unsigned int source) {
+        return {std::vector<double>(), std::vector<unsigned int>()};
+    }
 };
 
 template<typename T>
 using matrix = std::vector<std::vector<T>>;
 
-using PMIn = const Graph &;
-using PMOut = std::tuple<matrix<double>, matrix<unsigned int>>;
-using PMAlg = Algorithm<PMOut(const Graph &)>;
+using PathMAlg = Algorithm<std::tuple<matrix<double>, matrix<unsigned int>>(const Graph &)>;
 
-class PathsMultipleApp : public GraphApp<PMIn, PMOut> {
+class PathsMultipleApp : public GraphApp<PathMAlg> {
 public:
 
-    static PMOut graphAlgorithm(const Graph &graph) {
-        return {matrix<double>(), matrix<unsigned int>()};
+
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version) override {
+
     }
 
-    virtual Graph createGraph(const std::string &input) override {
+    const std::unordered_map<std::string, std::vector<PathMAlg>> getAlgorithmMap() override {
+        return {{"floyd-warshall", {PathMAlg(graphAlgorithm), PathMAlg(graphAlgorithm)}},
+                {"johnson",        {PathMAlg(graphAlgorithm), PathMAlg(graphAlgorithm)}}};
+    }
+
+private:
+
+    static Graph createGraph(const std::string &input) {
         char *token;
         unsigned int n = strtol(input.c_str(), &token, 10);
         unsigned int m = strtol(token, &token, 10);
@@ -98,12 +111,11 @@ public:
         return graph;
     }
 
-    const std::unordered_map<std::string, std::vector<PMAlg>> getAlgorithmMap() override {
-        return {{"floyd-warshall", {PMAlg(graphAlgorithm), PMAlg(graphAlgorithm)}},
-                {"johnson",        {PMAlg(graphAlgorithm), PMAlg(graphAlgorithm)}}};
-    }
+    static void printOutput(const matrix<double> &dist, const matrix<unsigned int> &pred) {}
 
-    virtual void printOutput(const matrix<double> &dist, const matrix<unsigned int> &pred) override {}
+    static std::tuple<matrix<double>, matrix<unsigned int>> graphAlgorithm(const Graph &graph) {
+        return {matrix<double>(), matrix<unsigned int>()};
+    }
 };
 
 

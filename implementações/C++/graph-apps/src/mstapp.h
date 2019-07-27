@@ -29,31 +29,29 @@
 #include "core/graphapp.h"
 #include "core/graph.h"
 
-using MIn = const Graph &;
-using MOut = std::tuple<double, Graph>;
-using MAlg = Algorithm<MOut(const Graph &)>;
+using MSTAlg = Algorithm<std::tuple<double, Graph>(const Graph &)>;
 
-class MSTApp : public GraphApp<MIn, MOut> {
+class MSTApp : public GraphApp<MSTAlg> {
 public:
 
-//    void start(const std::string &algorithmName, const std::string &inputFilePath,
-//               const std::string &outputFilePath, unsigned short version) override {
-//
-//        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
-//        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
-//        auto graph = runTask("creating graph", [&]() { return createGraph(input); });
-//        auto r = runTask("running algorithm", alg.execute, graph);
-//        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
-//    }
+    void start(const std::string &algorithmName, const std::string &inputFilePath,
+               const std::string &outputFilePath, unsigned short version) override {
 
-    const std::unordered_map<std::string, std::vector<MAlg>> getAlgorithmMap() override {
-        return {{"kruskal", {MAlg(mst), MAlg(mst)}},
-                {"prim",    {MAlg(mst), MAlg(mst)}}};
+        auto alg = runTask("selecting algorithm", [&]() { return this->selectAlgorithm(algorithmName, version); });
+        auto input = runTask("reading input file", &Application::readInputFile, inputFilePath);
+        auto graph = runTask("creating graph", [&]() { return createGraph(input); });
+        auto r = runTask("running algorithm", alg.execute, graph);
+        runTask("print output", [&]() { printOutput(std::get<0>(r), std::get<1>(r)); });
+    }
+
+    const std::unordered_map<std::string, std::vector<MSTAlg>> getAlgorithmMap() override {
+        return {{"kruskal", {MSTAlg(graphAlgorithm), MSTAlg(graphAlgorithm)}},
+                {"prim",    {MSTAlg(graphAlgorithm), MSTAlg(graphAlgorithm)}}};
     }
 
 private:
 
-    Graph createGraph(const std::string &input) override {
+    static Graph createGraph(const std::string &input) {
         char *token;
         unsigned int n = strtol(input.c_str(), &token, 10);
         unsigned int m = strtol(token, &token, 10);
@@ -70,9 +68,14 @@ private:
         return graph;
     }
 
-    void printOutput(const double &total, const Graph &mst) override {}
+    static void printOutput(const double total, const Graph &mst) {
+        printOutputFile("dataset/t1/out_kruger.txt", "resposta");
+    }
 
-    static std::tuple<double, Graph> mst(Graph graph) { return {0, Graph()}; }
+    static std::tuple<double, Graph> graphAlgorithm(const Graph &graph) {
+        return {0, Graph()};
+    }
+
 };
 
 
