@@ -79,7 +79,7 @@ private:
 
     static std::tuple<Graph, unsigned long>
     graphAlgorithm(const Graph &graph, unsigned int source, unsigned int target) {
-        return {Graph(), 0};
+        return {Graph(0), 0};
     }
 };
 

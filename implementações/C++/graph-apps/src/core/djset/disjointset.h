@@ -22,45 +22,23 @@
  * SOFTWARE.
  */
 
-#ifndef GRAPH_APPS_GRAPH_H
-#define GRAPH_APPS_GRAPH_H
+#ifndef GRAPH_APPS_DISJOINTSET_H
+#define GRAPH_APPS_DISJOINTSET_H
 
 
-#include <vector>
-
-struct Edge {
-
-    Edge(unsigned int start, unsigned int end, double weight) : start(start), end(end), weight(weight) {}
-
-    unsigned int start;
-    unsigned int end;
-    double weight;
-};
-
-class Graph {
+template<typename T>
+class DisjointSet {
 public:
 
-    explicit Graph(unsigned int n, unsigned long m = 0) : verticesSize(n) {
-        if (m > 0) edges.reserve(m);
-    }
+    virtual void makeSet() = 0;
 
-    void insertEdge(unsigned int v1, unsigned int v2, double w) {
-        edges.emplace_back(v1, v2, w);
-    }
+    virtual void join(T a, T b) = 0;
 
-    unsigned int getVerticesSize() const {
-        return verticesSize;
-    }
+    virtual int find(T a, T b) = 0;
 
-    const std::vector<Edge> &getEdges() const {
-        return edges;
-    }
+    bool sameSet(T x, T y) = 0;
 
-private:
-
-    unsigned int verticesSize;
-    std::vector<Edge> edges;
 };
 
 
-#endif //GRAPH_APPS_GRAPH_H
+#endif //GRAPH_APPS_DISJOINTSET_H

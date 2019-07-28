@@ -26,6 +26,7 @@
 #define GRAPH_APPS_MSTAPP_H
 
 
+#include <numeric>
 #include "core/graphapp.h"
 #include "core/graph.h"
 
@@ -68,12 +69,21 @@ private:
         return graph;
     }
 
+    static std::string formatOutput(const double total, const Graph &mst) {
+        std::string text;
+        text.append(std::to_string(total)).append("\n");
+        for (auto &e : mst.getEdges()) {
+            text.append(std::to_string(e.start) + " " + std::to_string(e.end) + " " + std::to_string(e.weight) + "\n");
+        }
+        return text;
+    }
+
     static void printOutput(const double total, const Graph &mst) {
-        printOutputFile("dataset/t1/out_kruger.txt", "resposta");
+        printOutputFile("dataset/t1/out_kruger.txt", formatOutput(total, mst));
     }
 
     static std::tuple<double, Graph> graphAlgorithm(const Graph &graph) {
-        return {0, Graph()};
+        return {0, Graph(0)};
     }
 
 };

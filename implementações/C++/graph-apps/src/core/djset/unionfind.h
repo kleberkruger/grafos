@@ -22,45 +22,16 @@
  * SOFTWARE.
  */
 
-#ifndef GRAPH_APPS_GRAPH_H
-#define GRAPH_APPS_GRAPH_H
+#ifndef GRAPH_APPS_UNIONFIND_H
+#define GRAPH_APPS_UNIONFIND_H
 
 
-#include <vector>
+#include "disjointset.h"
 
-struct Edge {
+template<typename T>
+class UnionFind : public DisjointSet<T> {
 
-    Edge(unsigned int start, unsigned int end, double weight) : start(start), end(end), weight(weight) {}
-
-    unsigned int start;
-    unsigned int end;
-    double weight;
-};
-
-class Graph {
-public:
-
-    explicit Graph(unsigned int n, unsigned long m = 0) : verticesSize(n) {
-        if (m > 0) edges.reserve(m);
-    }
-
-    void insertEdge(unsigned int v1, unsigned int v2, double w) {
-        edges.emplace_back(v1, v2, w);
-    }
-
-    unsigned int getVerticesSize() const {
-        return verticesSize;
-    }
-
-    const std::vector<Edge> &getEdges() const {
-        return edges;
-    }
-
-private:
-
-    unsigned int verticesSize;
-    std::vector<Edge> edges;
 };
 
 
-#endif //GRAPH_APPS_GRAPH_H
+#endif //GRAPH_APPS_UNIONFIND_H
